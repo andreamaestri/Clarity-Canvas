@@ -5,36 +5,37 @@ on:
     branches:
       - main
 
-  jobs:
-    build:
-      name: Build
-      runs-on: ubuntu-latest
+jobs:
+  build:
+    name: Build 
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Checkout repo
-          uses: actions/checkout@v4
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-        - uses: actions/checkout@v4
-        - name: Install pnpm
-          uses: pnpm/action-setup@v4
-          with:
-            version: 9
-        - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v4
-          with:
-            node-version: ${{ matrix.node-version }}
-            cache: 'pnpm'
-        - name: Install dependencies
-          run: pnpm install
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
-          - name: Build project
-            run: pnpm run build
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
 
-          - name: Upload production-ready build files
-            uses: actions/upload-artifact@v4
-            with:
-              name: production-files
-              path: ./dist
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build project
+        run: pnpm run build
+
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-files
+          path: ./dist
 
   deploy:
     name: Deploy
