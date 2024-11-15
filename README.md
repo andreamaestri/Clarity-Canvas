@@ -1,0 +1,2 @@
+# Clarity-Canvas
+CodeInstitute Hackathon
