@@ -31,6 +31,9 @@ jobs:
       shell: bash
       run: |
         echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+        
+    - name: Debug pnpm store path
+      run: echo $STORE_PATH     
 
     - name: Setup pnpm cache
       uses: actions/cache@v3
