@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@fontsource-variable/inter':
+        specifier: ^5.1.0
+        version: 5.1.0
+      '@fontsource-variable/lexend-deca':
+        specifier: ^5.1.0
+        version: 5.1.0
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -327,6 +333,12 @@ packages:
 
   '@floating-ui/utils@0.2.8':
     resolution: {integrity: sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==}
+
+  '@fontsource-variable/inter@5.1.0':
+    resolution: {integrity: sha512-Wj2dUGP0vUpxRGQTXQTCNJO+aLcFcQm+gUPXfj/aS877bQkEPBPv9JvZJpwdm2vzelt8NTZ+ausKlBCJjh2XIg==}
+
+  '@fontsource-variable/lexend-deca@5.1.0':
+    resolution: {integrity: sha512-5PyCCyrsvGEnHFkos9VCoIwY9uS0xoHrP6/f2ICwrmSAq1TXemyYDFs+XD4Zs0AmpQv3mLy83+99qAY3RpC+UA==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -2099,6 +2111,10 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
 
   '@floating-ui/utils@0.2.8': {}
+
+  '@fontsource-variable/inter@5.1.0': {}
+
+  '@fontsource-variable/lexend-deca@5.1.0': {}
 
   '@humanfs/core@0.19.1': {}
 

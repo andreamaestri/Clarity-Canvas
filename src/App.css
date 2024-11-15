@@ -1,3 +1,7 @@
+body {
+  font-family: 'Inter Variable', sans-serif;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +43,42 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Color Schemes */
+body.color-scheme-default {
+  --primary-color: #646cff;
+}
+
+body.color-scheme-dark {
+  --primary-color: #1a1a1a;
+}
+
+/* Apply variables */
+.tldraw-container {
+  color: var(--primary-color);
+}
+
+/*
+Visual Mode App.tsx:
+- Focus mode styles (minimal, muted colors)
+- Normal mode styles (engaging, full-featured)
+- Color scheme variables
+- Accessibility-focused color palettes
+- Widget layout and positioning
+- Responsive design
+- Animation and transition effects
+*/
+body.low-stimulation {
+  background-color: #f9f9f9;
+  color: #213547;
+  font-size: medium;
+  font-family: 'Inter Variable', sans-serif;
+}
+
+body.high-stimulation {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: large;
+  font-family: 'Lexend Deca Variable', cursive, sans-serif;
 }
