@@ -2,7 +2,7 @@
 name: User Stoy Template
 about: Custom template for user stories
 title: "[USER STORY]"
-labels: ''
+labels: must have
 assignees: ''
 
 ---
