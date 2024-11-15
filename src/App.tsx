@@ -28,7 +28,7 @@ export default function App() {
      Show/hide widgets per user choice */
 
 /* Timer Widget:
-   Initialize with default pomodoro times:
+   Initialise with default pomodoro times:
      Work period = 25 mins
      Break period = 5 mins
    When timer running:
