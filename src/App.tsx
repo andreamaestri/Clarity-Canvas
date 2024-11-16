@@ -1,112 +1,25 @@
-import { useEffect, useState } from 'react'
-import { Tldraw, track, useEditor } from 'tldraw'
-import 'tldraw/tldraw.css'
-import './custom-ui.css'
-import CoinFlipperWidget from './components/CoinFlipper'
-import TimerWidget from './components/TimerWidget'
-import PriorityListWidget from './components/PriorityListWidget'
-import PageScroller from './components/PageScroller'
-import FloatingToolbar from './components/FloatingToolbar'
+import { useState } from "react";
+import { Tldraw } from "tldraw";
+import { Toolbar } from "./components/Toolbar";
+import "tldraw/tldraw.css";
+import "./custom-ui.css";
+import "./index.css";
 
-export default function App() {
-  const [mode, setMode] = useState('focus')
-  const [pageCount, setPageCount] = useState(1)
+export default function CustomUiExample() {
+  const [mode, setMode] = useState<"focus" | "flex">("focus");
 
   return (
-    <div style={{ position: 'fixed', inset: 0 }}>
+    <div style={{ position: "fixed", inset: 0 }}>
       <Tldraw hideUi>
-        <CustomUi 
-          mode={mode} 
-          setMode={setMode}
-          pageCount={pageCount}
-          setPageCount={setPageCount}
+        <Toolbar
+          mode={mode}
+          onModeToggle={() => setMode(mode === "focus" ? "flex" : "focus")}
+          brandName="Clarity Canvas"
         />
       </Tldraw>
     </div>
-  )
+  );
 }
-
-const CustomUi = track(({ mode, setMode, pageCount, setPageCount }) => {
-  const editor = useEditor()
-
-  useEffect(() => {
-    const handleKeyUp = (e: KeyboardEvent) => {
-      switch (e.key) {
-        case 'Delete':
-        case 'Backspace': 
-          editor.deleteShapes(editor.getSelectedShapeIds())
-          break
-        case 'v': 
-          editor.setCurrentTool('select')
-          break
-        case 'e': 
-          editor.setCurrentTool('eraser')
-          break
-        case 'x':
-        case 'p':
-        case 'b':
-        case 'd': 
-          editor.setCurrentTool('draw')
-          break
-      }
-    }
-
-    window.addEventListener('keyup', handleKeyUp)
-    return () => window.removeEventListener('keyup', handleKeyUp)
-  }, [editor])
-
-  return (
-    <div className="custom-layout">
-      <div className="custom-toolbar">
-        <FloatingToolbar
-          brandName="Clarity Canvas"
-          mode={mode}
-          onModeToggle={() => setMode(mode === 'focus' ? 'flex' : 'focus')}
-        />
-        <div className="tool-buttons">
-          <button
-            type="button"
-            className="custom-button"
-            data-isactive={editor.getCurrentToolId() === 'select'}
-            onClick={() => editor.setCurrentTool('select')}
-          >
-            Select
-          </button>
-          <button
-            type="button"
-            className="custom-button"
-            data-isactive={editor.getCurrentToolId() === 'draw'}
-            onClick={() => editor.setCurrentTool('draw')}
-          >
-            Pencil
-          </button>
-          <button
-            type="button"
-            className="custom-button"
-            data-isactive={editor.getCurrentToolId() === 'eraser'}
-            onClick={() => editor.setCurrentTool('eraser')}
-          >
-            Eraser
-          </button>
-        </div>
-      </div>
-      
-      <div className="widgets-container">
-        <CoinFlipperWidget />
-        <TimerWidget />
-        <PriorityListWidget />
-      </div>
-
-      <div className="page-controls">
-        <PageScroller
-          pageCount={pageCount}
-          onAddPage={() => setPageCount(pageCount + 1)}
-          onRemovePage={() => setPageCount(Math.max(1, pageCount - 1))}
-        />
-      </div>
-    </div>
-  )
-})
 
 /* InitialSetup Component:
    When user first opens app:
