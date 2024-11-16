@@ -11,7 +11,6 @@ const DrawTool: FC<DrawToolProps> = ({ editor }) => {
     <Button
       type="button"
       className="custom-button"
-      isSelected={editor.getCurrentToolId() === 'draw'}
       onPress={() => editor.setCurrentTool('draw')}
     >
       Draw
