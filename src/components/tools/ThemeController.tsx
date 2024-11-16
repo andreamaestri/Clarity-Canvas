@@ -1,34 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+interface Theme {
+    name: string;
+    description: string;
+    previewColor: string;
+}
 
 const ThemeController: React.FC = () => {
-    const themes = ['Default', 'Retro', 'Cyberpunk', 'Valentine', 'Aqua'];
+    const [currentTheme, setCurrentTheme] = useState('default');
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const themes: Theme[] = [
+        { name: 'Default', description: 'Clean and modern look', previewColor: '#570DF8' },
+        { name: 'Retro', description: 'Classic vintage style', previewColor: '#E8B059' },
+        { name: 'Cyberpunk', description: 'Futuristic neon design', previewColor: '#FF00FF' },
+        { name: 'Valentine', description: 'Soft and romantic tones', previewColor: '#FF69B4' },
+        { name: 'Aqua', description: 'Cool ocean-inspired theme', previewColor: '#00FFFF' },
+    ];
+
+    const handleThemeChange = (themeName: string) => {
+        setCurrentTheme(themeName.toLowerCase());
+        document.documentElement.setAttribute('data-theme', themeName.toLowerCase());
+        setIsExpanded(false); // Collapse after selection
+    };
+
+    const currentThemeObject = themes.find(theme => theme.name.toLowerCase() === currentTheme);
 
     return (
-        <div className="dropdown mb-72">
-            <div tabIndex={0} role="button" className="btn m-1">
-                Theme
-                <svg
-                    width="12px"
-                    height="12px"
-                    className="inline-block h-2 w-2 fill-current opacity-60"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 2048 2048">
-                    <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
-                </svg>
-            </div>
-            <ul tabIndex={0} className="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl">
-                {themes.map((theme) => (
-                    <li key={theme}>
-                        <input
-                            type="radio"
-                            name="theme-dropdown"
-                            className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                            aria-label={theme}
-                            value={theme.toLowerCase()}
-                        />
-                    </li>
-                ))}
-            </ul>
+        <div className="bg-base-200 p-4 rounded-t-2xl shadow-lg">
+            {!isExpanded ? (
+                <div 
+                    className="cursor-pointer flex items-center gap-3"
+                    onClick={() => setIsExpanded(true)}
+                >
+                    <div
+                        className="w-6 h-6 rounded-full border-2"
+                        style={{ backgroundColor: currentThemeObject?.previewColor }}
+                    />
+                    <div className="font-medium">{currentThemeObject?.name}</div>
+                </div>
+            ) : (
+                <>
+                    <h3 className="text-lg font-bold mb-4">Choose Theme</h3>
+                    <div className="grid grid-cols-2 gap-4">
+                        {themes.map((theme) => (
+                            <div
+                                key={theme.name}
+                                className={`cursor-pointer p-4 rounded-lg transition-all duration-200 ${
+                                    currentTheme === theme.name.toLowerCase()
+                                        ? 'bg-primary text-primary-content'
+                                        : 'bg-base-100 hover:bg-base-300'
+                                }`}
+                                onClick={() => handleThemeChange(theme.name)}
+                            >
+                                <div className="flex items-center gap-3">
+                                    <div
+                                        className="w-6 h-6 rounded-full border-2"
+                                        style={{ backgroundColor: theme.previewColor }}
+                                    />
+                                    <div>
+                                        <div className="font-medium">{theme.name}</div>
+                                        <div className="text-sm opacity-70">{theme.description}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </>
+            )}
         </div>
     );
 };
