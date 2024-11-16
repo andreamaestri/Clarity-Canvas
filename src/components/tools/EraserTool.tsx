@@ -11,7 +11,6 @@ const EraserTool: FC<EraserToolProps> = ({ editor }) => {
     <Button
       type="button"
       className="custom-button"
-      isSelected={editor.getCurrentToolId() === 'eraser'}
       onPress={() => editor.setCurrentTool('eraser')}
     >
       Eraser

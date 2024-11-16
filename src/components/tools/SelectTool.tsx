@@ -10,7 +10,7 @@ const SelectTool = memo(({ editor }: SelectToolProps) => (
     <Button
         type="button"
         className="custom-button"
-        isSelected={editor.getCurrentToolId() === 'select'}
+        aria-pressed={editor.getCurrentToolId() === 'select'}
         onPress={() => editor.setCurrentTool('select')}
     >
         Select
