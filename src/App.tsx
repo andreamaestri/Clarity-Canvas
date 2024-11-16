@@ -1,12 +1,25 @@
-import { Tldraw } from 'tldraw'
-import 'tldraw/tldraw.css'
+import { useState } from "react";
+import { Tldraw } from "tldraw";
+import { Toolbar } from "./components/Toolbar";
+import Logo from "./assets/CC-v.svg";
+import "tldraw/tldraw.css";
+import "./custom-ui.css";
+import "./index.css";
 
-export default function App() {
- return (
-  <div style={{ position: 'fixed', inset: 0 }}>
-   <Tldraw />
-  </div>
- )
+export default function CustomUiExample() {
+  const [mode, setMode] = useState<"focus" | "flex">("focus");
+
+  return (
+    <div style={{ position: "fixed", inset: 0 }}>
+      <Tldraw hideUi>
+        <Toolbar
+          mode={mode}
+          onModeToggle={() => setMode(mode === "focus" ? "flex" : "focus")}
+          logo={<img src={Logo} alt="Clarity Canvas" className="h-8 w-auto text-base-content" />}
+        />
+      </Tldraw>
+    </div>
+  );
 }
 
 /* InitialSetup Component:

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -65,4 +69,15 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.tool-button {
+  @apply p-2 rounded-lg transition-all duration-200
+         hover:bg-gray-100 active:bg-gray-200
+         text-gray-600 hover:text-gray-900
+         focus:outline-none focus:ring-2 focus:ring-blue-500/40;
+}
+
+.tool-button[data-active="true"] {
+  @apply bg-gray-200 text-gray-900;
 }
