@@ -1,5 +1,8 @@
 # Standardized Hackathon Readme
 
+> Link to the deployed site:
+> Contents
+
 ## Project Overview
 This project was developed during a hackathon hosted by [Code Institute in November 2024](https://hackathon.codeinstitute.net/hackathon/53/). The goal was to come up with an idea for an app which helps people with accessibility needs. We were allowed to use any technology that we felt was necessary. 
 
@@ -26,6 +29,7 @@ The user is able to toggle between Flex Mode and Focus Mode depending on the lev
 ## User Stories
 
 > To be reviewed
+> 
 **Setup and Customisation User Stories:**
 As a new user, I want to be prompted with an initial setup screen
 so that I can quickly customise my workspace with options like font size, mode selection (focus or normal), and colour scheme.
