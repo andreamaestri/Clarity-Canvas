@@ -15,7 +15,7 @@ export default function CustomUiExample() {
         <Toolbar
           mode={mode}
           onModeToggle={() => setMode(mode === "focus" ? "flex" : "focus")}
-          logo={<img src={Logo} alt="Clarity Canvas" className="h-8 w-auto" />}
+          logo={<img src={Logo} alt="Clarity Canvas" className="h-8 w-auto text-base-content" />}
         />
       </Tldraw>
     </div>
