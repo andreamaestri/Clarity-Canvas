@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Tldraw } from "tldraw";
 import { Toolbar } from "./components/Toolbar";
+import Logo from "./assets/CC-v.svg";
 import "tldraw/tldraw.css";
 import "./custom-ui.css";
 import "./index.css";
@@ -14,7 +15,7 @@ export default function CustomUiExample() {
         <Toolbar
           mode={mode}
           onModeToggle={() => setMode(mode === "focus" ? "flex" : "focus")}
-          brandName="Clarity Canvas"
+          logo={<img src={Logo} alt="Clarity Canvas" className="h-8 w-auto" />}
         />
       </Tldraw>
     </div>
