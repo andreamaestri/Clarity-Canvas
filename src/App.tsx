@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Tldraw } from "tldraw";
 import { Toolbar } from "./components/Toolbar";
 import "tldraw/tldraw.css";
-import '@fontsource-variable/lexend-deca';
+import '@fontsource-variable/lexend-deca/wght.css';
 
 export default function CustomUiExample() {
   const [mode, setMode] = useState<"focus" | "flex">("focus");
