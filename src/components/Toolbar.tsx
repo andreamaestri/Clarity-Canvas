@@ -33,21 +33,19 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
               </span>
             </div>
 
-            <DrawingTools editor={editor} />
-
-            <CoinFlipper />
-
-            <TimerWidget />
-
-            <PriorityListWidget />
-
-            <PageScroller />
-
-            <NoteTool editor={editor} />
+            {mode === "flex" && (
+              <>
+                <DrawingTools editor={editor} />
+                <CoinFlipper />
+                <TimerWidget />
+                <PriorityListWidget />
+                <PageScroller />
+                <NoteTool editor={editor} />
+                <ThemeController />
+              </>
+            )}
 
             <ModeToggle mode={mode} onModeToggle={onModeToggle} />
-
-            <ThemeController />
           </AriaToolbar>
         </div>
       )}
