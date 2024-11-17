@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Tldraw } from "tldraw";
 import { Toolbar } from "./components/Toolbar";
-import Logo from "./assets/CC-v.svg";
 import "tldraw/tldraw.css";
-import "./custom-ui.css";
-import "./index.css";
+import '@fontsource-variable/lexend-deca';
 
 export default function CustomUiExample() {
   const [mode, setMode] = useState<"focus" | "flex">("focus");
@@ -15,7 +13,6 @@ export default function CustomUiExample() {
         <Toolbar
           mode={mode}
           onModeToggle={() => setMode(mode === "focus" ? "flex" : "focus")}
-          logo={<img src={Logo} alt="Clarity Canvas" className="h-8 w-auto text-base-content" />}
         />
       </Tldraw>
     </div>

@@ -1,21 +1,23 @@
-import type { FC } from 'react';
-import { Button } from 'react-aria-components';
+import { memo } from 'react';
 import type { Editor } from 'tldraw';
+import { RiEraserFill } from 'react-icons/ri';
+import ToolButton from '../common/ToolButton';
 
 interface EraserToolProps {
   editor: Editor;
 }
 
-const EraserTool: FC<EraserToolProps> = ({ editor }) => {
-  return (
-    <Button
-      type="button"
-      className="custom-button"
-      onPress={() => editor.setCurrentTool('eraser')}
-    >
-      Eraser
-    </Button>
-  );
-};
+const EraserTool = memo(({ editor }: EraserToolProps) => (
+  <ToolButton
+    editor={editor}
+    toolId="eraser"
+    label="Eraser"
+    icon={RiEraserFill}
+    shortcut="E"
+    tooltipPosition="top"
+  />
+));
 
-export default EraserTool;
+EraserTool.displayName = 'EraserTool';
+
+export default EraserTool

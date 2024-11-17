@@ -1,21 +1,23 @@
-import type { FC } from 'react';
-import { Button } from 'react-aria-components';
+import { memo } from 'react';
 import type { Editor } from 'tldraw';
+import { RiPencilFill } from 'react-icons/ri';
+import ToolButton from '../common/ToolButton';
 
 interface DrawToolProps {
   editor: Editor;
 }
 
-const DrawTool: FC<DrawToolProps> = ({ editor }) => {
-  return (
-    <Button
-      type="button"
-      className="custom-button"
-      onPress={() => editor.setCurrentTool('draw')}
-    >
-      Draw
-    </Button>
-  );
-};
+const DrawTool = memo(({ editor }: DrawToolProps) => (
+  <ToolButton
+    editor={editor}
+    toolId="draw"
+    label="Draw"
+    icon={RiPencilFill}
+    shortcut="D"
+    tooltipPosition="top"
+  />
+));
+
+DrawTool.displayName = 'DrawTool';
 
 export default DrawTool;

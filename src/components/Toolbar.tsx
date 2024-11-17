@@ -1,63 +1,60 @@
-import React from 'react';
-import { track, useEditor } from 'tldraw';
-import { Button } from 'react-aria-components';
-import DrawingTools from './tools/DrawingTools';
-import CoinFlipper from './tools/CoinFlipper';
-import TimerWidget from './tools/TimerWidget';
-import PriorityListWidget from './tools/PriorityListWidget';
-import PageScroller from './tools/PageScroller';
-import ThemeController from './tools/ThemeController';
+import React from "react";
+import { track, useEditor } from "tldraw";
+import { Button } from "react-aria-components";
+import DrawingTools from "./tools/DrawingTools";
+import CoinFlipper from "./tools/CoinFlipper";
+import TimerWidget from "./tools/TimerWidget";
+import PriorityListWidget from "./tools/PriorityListWidget";
+import PageScroller from "./tools/PageScroller";
+import ThemeController from "./tools/ThemeController";
+import Logo from "./Logo";
 
 interface ToolbarProps {
-  mode: 'focus' | 'flex';
+  mode: "focus" | "flex";
   onModeToggle: () => void;
-  logo: React.ReactNode;
 }
 
-export const Toolbar = track(
-  ({ mode, onModeToggle, logo }: ToolbarProps) => {
-    const editor = useEditor();
+export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
+  const editor = useEditor();
 
-    return (
-      <div className="fixed bottom-5 left-1/2 transform -translate-x-1/2 
-        flex items-center gap-4 p-4 
-        bg-base-100 backdrop-blur-sm 
-        rounded-2xl shadow-lg 
-        border border-base-300
-        transition-all duration-200 ease-in-out
-        hover:shadow-xl z-50">
-        
-        {/* Brand */}
-        <div className="brand font-medium text-base-content px-2">
-          {logo}
+  return (
+    <div className="fixed bottom-0 left-0 right-0 bg-base-100/95 shadow-xl border-t border-base-300 z-50">
+      <nav className="max-w-4xl mx-auto px-4 h-28"> {/* Reduced height */}
+        <div className="flex items-center justify-between h-full"> {/* Full height flex container */}
+          {/* Left Section */}
+          <div className="flex items-center space-x-4 flex-shrink-0"> {/* Added flex-shrink-0 */}
+            {/* Brand */}
+            <div className="flex items-center">
+              <Logo />
+              <span className="ml-2 text-primary text-lg">Clarity Canvas</span>
+            </div>
+
+            <div className="border-l border-base-300 pl-4 flex items-center">
+              <DrawingTools editor={editor} />
+            </div>
+          </div>
+
+          {/* Middle Section - Widgets */}
+          <div className="flex items-center space-x-2 px-4"> {/* Added px-4 for spacing */}
+            <CoinFlipper />
+            <TimerWidget />
+            <PriorityListWidget />
+            <PageScroller />
+          </div>
+
+          {/* Right Section */}
+          <div className="flex items-center space-x-4 flex-shrink-0"> {/* Added flex-shrink-0 */}
+            <Button
+              type="button"
+              onPress={onModeToggle}
+              className="btn btn-sm btn-outline"
+            >
+              {mode === "focus" ? "Focus Mode" : "Flex Mode"}
+            </Button>
+            <ThemeController />
+          </div>
         </div>
-
-        {/* Drawing Tools */}
-        <DrawingTools editor={editor} />
-
-        {/* Widgets */}
-        <div className="widgets flex gap-2">
-          <CoinFlipper />
-          <TimerWidget />
-          <PriorityListWidget />
-          <PageScroller />
-        </div>
-
-        {/* Separator */}
-        <div className="h-6 w-px bg-base-300"></div>
-
-        {/* Mode Toggle */}
-        <Button
-          type="button"
-          onPress={onModeToggle}
-          className="btn btn-sm btn-outline"
-        >
-          {mode === 'focus' ? 'Focus Mode' : 'Flex Mode'}
-        </Button>
-
-        {/* Theme Controller */}
-        <ThemeController />
-      </div>
-    );
-  }
-);
+      </nav>
+    </div>
+  );
+});
