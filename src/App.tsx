@@ -1,43 +1,33 @@
-import type { TLUiActionsContextType, TLUiOverrides, TLUiToolsContextType } from 'tldraw';
-import { Tldraw } from 'tldraw';
+import { TLUiActionsContextType, TLUiOverrides, TLUiToolsContextType, Tldraw } from 'tldraw';
+import 'tldraw/tldraw.css';
 import { useState } from "react";
 import { Toolbar } from "./components/Toolbar";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import ThemeController from "./components/tools/ThemeController";
-import "tldraw/tldraw.css";
 import "@fontsource-variable/lexend-deca/wght.css";
 
 // Override Tldraw shortcuts
 const overrides: TLUiOverrides = {
   actions(_editor, actions): TLUiActionsContextType {
-    const keysToDisable = ['toggle-grid', 'copy-as-png', 'undo', 'redo'];
-    const newActions = { ...actions };
-    
-    for (const key of keysToDisable) {
-      newActions[key].kbd = undefined;
-    }
+    const newActions = Object.keys(actions).reduce((acc, key) => {
+      acc[key] = { ...actions[key], kbd: null };
+      return acc;
+    }, {} as TLUiActionsContextType);
 
     return newActions;
   },
   tools(_editor, tools): TLUiToolsContextType {
-    const keysToDisable = ['draw', 'erase'] as const;
-    const newTools = { ...tools };
+    const newTools = Object.keys(tools).reduce((acc, key) => {
+      acc[key] = { ...tools[key], kbd: null };
+      return acc;
+    }, {} as TLUiToolsContextType);
 
-    for (const key of keysToDisable) {
-      if (key in newTools) {
-        newTools[key] = {
-          ...newTools[key],
-          kbd: undefined
-        };
-      }
-    }
-    
     return newTools;
-  }
+  },
 };
 
 const TldrawWrapper = () => {
-  const [mode, setMode] = useState<"focus" | "flex">("focus");
+  const [mode, setMode] = useState<"focus" | "flex">("flex"); // Default to "flex" mode
   const { isDarkMode } = useTheme();
 
   return (

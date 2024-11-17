@@ -24,7 +24,7 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
   return (
     <>
       {isToolbarVisible && (
-        <div className="fixed bottom-0 left-0 right-0 p-4 bg-base-200 shadow-lg rounded-t-xl">
+        <div className="fixed bottom-0 left-0 right-0 p-4 bg-base-200 shadow-lg rounded-t-xl overflow-x-auto">
           <AriaToolbar aria-label="Application Toolbar" className="flex justify-center items-center gap-4">
             <div className="hidden md:flex items-center gap-2">
               <Logo className="h-8" />
