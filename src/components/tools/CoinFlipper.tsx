@@ -1,4 +1,4 @@
-import { Dialog, DialogTrigger, Heading, Popover } from "react-aria-components";
+import { Button, Dialog, DialogTrigger, Heading, Popover } from "react-aria-components";
 import { useState } from "react";
 import type { FC } from "react";
 import ToolButton from "../common/ToolButton";
@@ -65,23 +65,24 @@ const CoinFlipper: FC = () => {
                       </p>
                     </div>
                   ) : (
-                    <span
+                    <DialogTrigger>
+                      <span
                       className="text-8xl hover:rotate-12 transition-transform duration-300 cursor-pointer hover:scale-110"
-                      onClick={flipCoin}
-                    >
+                      >
                       🪙
-                    </span>
+                      </span>
+                    </DialogTrigger>
                   )}
                 </div>
 
-                <button
+                <Button
                   type="button"
                   onClick={flipCoin}
                   className="btn btn-primary w-full text-lg font-semibold hover:scale-105 transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
                   disabled={isFlipping}
                 >
                   {isFlipping ? "Flipping..." : "Flip Coin"}
-                </button>
+                </Button>
               </div>
             </div>
           </Dialog>
