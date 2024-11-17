@@ -1,9 +1,16 @@
-import { Button } from 'react-aria-components';
+import { memo } from 'react';
+import { RiTimerLine } from 'react-icons/ri';
+import ToolButton from '../common/ToolButton';
 
-export default function TimerWidget(): JSX.Element {
-  return (
-    <Button className="custom-button">
-      Timer
-    </Button>
-  );
-}
+const TimerWidget = memo(() => (
+  <ToolButton
+    label="Timer"
+    icon={RiTimerLine}
+    onPress={() => console.log('Open timer')}
+    tooltipPosition="top"
+  />
+));
+
+TimerWidget.displayName = 'TimerWidget';
+
+export default TimerWidget;

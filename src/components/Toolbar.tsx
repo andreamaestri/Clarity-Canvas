@@ -19,43 +19,39 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-base-100/95 shadow-xl border-t border-base-300 z-50">
-      <nav className="max-w-4xl mx-auto px-4 h-28">
-        <div className="flex items-center justify-between h-full">
+      <nav className="max-w-4xl mx-auto px-4 h-28"> {/* Reduced height */}
+        <div className="flex items-center justify-between h-full"> {/* Full height flex container */}
           {/* Left Section */}
-          <div className="join items-center">
+          <div className="flex items-center space-x-4 flex-shrink-0"> {/* Added flex-shrink-0 */}
             {/* Brand */}
-            <div className="join-item flex items-center">
+            <div className="flex items-center">
               <Logo />
               <span className="ml-2 text-primary text-lg">Clarity Canvas</span>
             </div>
 
-            <div className="join-item divider divider-horizontal" />
-
-            <div className="join-item">
+            <div className="border-l border-base-300 pl-4 flex items-center">
               <DrawingTools editor={editor} />
             </div>
           </div>
 
           {/* Middle Section - Widgets */}
-          <div className="join">
-            <div className="join-item"><CoinFlipper /></div>
-            <div className="join-item"><TimerWidget /></div>
-            <div className="join-item"><PriorityListWidget /></div>
-            <div className="join-item"><PageScroller /></div>
+          <div className="flex items-center space-x-2 px-4"> {/* Added px-4 for spacing */}
+            <CoinFlipper />
+            <TimerWidget />
+            <PriorityListWidget />
+            <PageScroller />
           </div>
 
           {/* Right Section */}
-          <div className="join items-center">
+          <div className="flex items-center space-x-4 flex-shrink-0"> {/* Added flex-shrink-0 */}
             <Button
               type="button"
               onPress={onModeToggle}
-              className="join-item btn btn-sm btn-outline"
+              className="btn btn-sm btn-outline"
             >
               {mode === "focus" ? "Focus Mode" : "Flex Mode"}
             </Button>
-            <div className="join-item">
-              <ThemeController />
-            </div>
+            <ThemeController />
           </div>
         </div>
       </nav>

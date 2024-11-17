@@ -1,9 +1,16 @@
-import { Button } from 'react-aria-components';
+import { memo } from 'react';
+import { RiPagesLine } from 'react-icons/ri';
+import ToolButton from '../common/ToolButton';
 
-export default function PageScroller(): JSX.Element {
-  return (
-    <Button className="custom-button">
-      Turn Page
-    </Button>
-  );
-}
+const PageScroller = memo(() => (
+  <ToolButton
+    label="Page Scroller"
+    icon={RiPagesLine}
+    onPress={() => console.log('Open page scroller')}
+    tooltipPosition="top"
+  />
+));
+
+PageScroller.displayName = 'PageScroller';
+
+export default PageScroller;

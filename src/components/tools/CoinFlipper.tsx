@@ -1,5 +1,4 @@
 import {
-	Button,
 	Dialog,
 	DialogTrigger,
 	Heading,
@@ -8,6 +7,8 @@ import {
 } from "react-aria-components";
 import { useState } from "react";
 import type { FC } from "react";
+import ToolButton from "../common/ToolButton";
+import { RiCopperCoinLine } from "react-icons/ri";
 
 const CoinFlipper: FC = () => {
 	const [result, setResult] = useState<"heads" | "tails" | null>(null);
@@ -17,7 +18,6 @@ const CoinFlipper: FC = () => {
 		setIsFlipping(true);
 		setResult(null);
 
-		// Add animation time before showing result
 		setTimeout(() => {
 			const outcome = Math.random() > 0.5 ? "heads" : "tails";
 			setResult(outcome);
@@ -26,42 +26,54 @@ const CoinFlipper: FC = () => {
 	};
 
 	return (
-		<DialogTrigger>
-			<Button className="btn btn-primary">Flip a Coin</Button>
-			<Popover placement="top">
-				<OverlayArrow>
-					<svg width={12} height={12} viewBox="0 0 12 12">
-						<path d="M0 0 L6 6 L12 0" />
-					</svg>
-				</OverlayArrow>
-				<Dialog className="card bg-base-100 shadow-xl p-6">
-					<div className="w-48">
-						{" "}
-						{/* Changed from w-64 to w-48 */}
-						<Heading slot="title" className="card-title text-center mb-4">
-							Coin Flipper
-						</Heading>
-						<div className="flex flex-col items-center gap-4">
-							<div
-								className={`text-6xl font-bold mb-4 h-8 ${
-									isFlipping ? "animate-bounce" : ""
-								}`}
-							>
-								{isFlipping ? "🪙" : result ? `${result.toUpperCase()}!` : "🪙"}
-							</div>
+		<>
+			<DialogTrigger>
+				<ToolButton
+					label="Flip Coin"
+					icon={RiCopperCoinLine}
+					onPress={flipCoin}
+					isActive={isFlipping}
+					variant="ghost"
+					size="md"
+				/>
 
-							<Button
-								onPress={flipCoin}
-								className="btn btn-primary w-full"
-								isDisabled={isFlipping}
+				<Popover placement="top">
+					<Dialog className="card bg-secondary shadow-xl p-8">
+						<div className="w-64">
+							<Heading
+								slot="title"
+								className="card-title text-center text-secondary-content text-2xl mb-6"
 							>
-								{isFlipping ? "Flipping..." : "Flip Coin"}
-							</Button>
+								Coin Flipper
+							</Heading>
+							<div className="flex flex-col items-center gap-6">
+								<div className="text-secondary-content h-32 flex items-center justify-center">
+									{isFlipping ? (
+										<span className="animate-spin text-8xl">🪙</span>
+									) : result ? (
+										<span className="text-3xl font-bold animate-bounce">
+											{result.toUpperCase()}!
+										</span>
+									) : (
+										<span className="text-8xl hover:rotate-12 transition-transform">
+											🪙
+										</span>
+									)}
+								</div>
+
+								<button
+									onClick={flipCoin}
+									className="btn btn-primary w-full text-lg font-semibold hover:scale-105 transition-transform"
+									disabled={isFlipping}
+								>
+									{isFlipping ? "Flipping..." : "Flip Coin"}
+								</button>
+							</div>
 						</div>
-					</div>
-				</Dialog>
-			</Popover>
-		</DialogTrigger>
+					</Dialog>
+				</Popover>
+			</DialogTrigger>
+		</>
 	);
 };
 
