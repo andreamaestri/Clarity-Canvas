@@ -3,38 +3,50 @@
 @tailwind utilities;
 
 .logo {
-  font-family: 'Lexend Deca Variable', sans-serif;
+    font-family: "Lexend Deca Variable", sans-serif;
 }
 
 /* Theme-Based Accent Colors */
 [data-theme="default"] .text-accent {
-  color: #646cff; /* Primary color for Default theme */
+    color: #646cff; /* Primary color for Default theme */
 }
 
 [data-theme="retro"] .text-accent {
-  color: #E8B059;
+    color: #e8b059;
 }
 
 [data-theme="cyberpunk"] .text-accent {
-  color: #FF00FF;
+    color: #ff00ff;
 }
 
 [data-theme="valentine"] .text-accent {
-  color: #FF69B4;
+    color: #ff69b4;
 }
 
 [data-theme="aqua"] .text-accent {
-  color: #00FFFF;
+    color: #00ffff;
 }
 
 /* Press Highlight Styles */
 .bg-accent {
-  background-color: accent; /* Uses the current text color */
+    background-color: accent; /* Uses the current text color */
 }
-
 
 /* Button State-Based Styles */
 .btn[data-pressed="true"] .text-accent {
-  /* Change icon color when pressed */
-  color: #ffffff;
+    /* Change icon color when pressed */
+    color: #ffffff;
+}
+
+.tl-watermark_SEE-LICENSE {
+    /* Style */
+    padding: 4px 8px !important;
+    background: oklch(var(--b1)) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.tl-watermark_SEE-LICENSE a {
+    filter: invert(1) opacity(var(--tw-text-opacity)) !important;
+    opacity: 0.1;
+    transition: all 0.2s ease !important;
 }
