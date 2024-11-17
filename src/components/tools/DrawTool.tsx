@@ -1,7 +1,7 @@
-import { memo } from 'react';
-import type { Editor } from 'tldraw';
-import { RiPencilFill } from 'react-icons/ri';
-import ToolButton from '../common/ToolButton';
+import { memo } from "react";
+import type { Editor } from "tldraw";
+import { RiPencilFill } from "react-icons/ri";
+import ToolButton from "../common/ToolButton";
 
 interface DrawToolProps {
   editor: Editor;
@@ -18,6 +18,6 @@ const DrawTool = memo(({ editor }: DrawToolProps) => (
   />
 ));
 
-DrawTool.displayName = 'DrawTool';
+DrawTool.displayName = "DrawTool";
 
 export default DrawTool;
