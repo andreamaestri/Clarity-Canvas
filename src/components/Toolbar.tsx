@@ -19,10 +19,10 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-base-100/95 shadow-xl border-t border-base-300 z-50">
-      <nav className="max-w-4xl mx-auto px-4 h-28"> {/* Reduced height */}
-        <div className="flex items-center justify-between h-full"> {/* Full height flex container */}
+      <nav className="max-w-4xl mx-auto px-4 h-28">
+        <div className="flex items-center justify-between h-full">
           {/* Left Section */}
-          <div className="flex items-center space-x-4 flex-shrink-0"> {/* Added flex-shrink-0 */}
+          <div className="flex items-center space-x-4 flex-shrink-0">
             {/* Brand */}
             <div className="flex items-center">
               <Logo />
@@ -35,7 +35,7 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
           </div>
 
           {/* Middle Section - Widgets */}
-          <div className="flex items-center space-x-2 px-4"> {/* Added px-4 for spacing */}
+          <div className="flex items-center space-x-2 px-4">
             <CoinFlipper />
             <TimerWidget />
             <PriorityListWidget />
@@ -43,7 +43,7 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
           </div>
 
           {/* Right Section */}
-          <div className="flex items-center space-x-4 flex-shrink-0"> {/* Added flex-shrink-0 */}
+          <div className="flex items-center space-x-4 flex-shrink-0">
             <Button
               type="button"
               onPress={onModeToggle}

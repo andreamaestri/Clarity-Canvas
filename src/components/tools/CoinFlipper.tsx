@@ -2,7 +2,6 @@ import {
 	Dialog,
 	DialogTrigger,
 	Heading,
-	OverlayArrow,
 	Popover,
 } from "react-aria-components";
 import { useState } from "react";
@@ -62,11 +61,11 @@ const CoinFlipper: FC = () => {
 								</div>
 
 								<button
+									type="button"
 									onClick={flipCoin}
 									className="btn btn-primary w-full text-lg font-semibold hover:scale-105 transition-transform"
 									disabled={isFlipping}
 								>
-									{isFlipping ? "Flipping..." : "Flip Coin"}
 								</button>
 							</div>
 						</div>
