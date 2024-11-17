@@ -1,10 +1,8 @@
 import { FC } from 'react';
 import {
-  Button,
   Dialog,
   DialogTrigger,
   Heading,
-  OverlayArrow,
   Popover,
 } from 'react-aria-components';
 import { RiListCheck2 } from 'react-icons/ri';

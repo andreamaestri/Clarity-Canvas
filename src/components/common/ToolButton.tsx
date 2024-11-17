@@ -60,7 +60,7 @@ const ToolButton: FC<ToolButtonProps> = ({
         aria-label={label}
         aria-pressed={isActive}
       >
-        {({ isPressed, isHovered, isFocused }) => (
+        {({ isPressed, isHovered }) => (
           <div className="relative">
             {isPressed && <PressHighlight />}
             <Icon
