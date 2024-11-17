@@ -54,6 +54,96 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/*------------------- Popup Window -------------------*/
+body {
+  max-width: 600px;
+  max-height: max-content;
+  margin: 0 auto;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+}
+
+button[type="submit"] {
+  background-color: white;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.initial-setup {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border: white solid 1px;
+  border-radius: 8px;
+}
+
+.initial-setup fieldset {
+  margin: 0 20px;
+  width: 300px;
+}
+
+img.colour-preview {
+  height: 2rem;
+  border: solid;
+}
+div.colour {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  margin-right: 6rem;
+  max-width: 20rem;
+}
+div.colour > img {
+  margin-left: 1rem;
+}
+
+/*------------------- Tooltips -------------------*/
+.tooltip {
+  position: relative;
+  display: block;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  width: 200px;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #acacac;
+  color: #000000;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 0.8em;
+  line-height: 1.5;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  animation: fadeOut 1s 3s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
