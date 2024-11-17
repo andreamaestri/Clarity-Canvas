@@ -15,6 +15,7 @@ const TldrawWrapper = () => {
       <Tldraw 
         darkMode={isDarkMode}
         hideUi
+        persistenceKey="my-persistence-key"
       >
         <Toolbar
           mode={mode}

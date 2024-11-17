@@ -3,6 +3,8 @@ import { Button } from "react-aria-components";
 import type { Editor } from "tldraw";
 import type { IconType } from "react-icons";
 import { track } from "tldraw";
+import { useKeyboard, usePress } from 'react-aria';
+import { useRef } from 'react';
 
 interface ToolButtonProps {
   editor?: Editor;
@@ -30,12 +32,34 @@ const ToolButton: FC<ToolButtonProps> = track(
     variant = "ghost",
     size = "sm",
   }) => {
+    const ref = useRef<HTMLButtonElement>(null);
+    
     const handlePress = () => {
       if (editor && toolId) {
         editor.setCurrentTool(toolId);
       }
       onPress?.();
     };
+
+    // Handle keyboard shortcuts
+    const { keyboardProps } = useKeyboard({
+      onKeyDown: (e) => {
+        if (!shortcut) return;
+        
+        const keys = shortcut.toLowerCase().split('+');
+        const mainKey = keys[keys.length - 1];
+        
+        if (e.key.toLowerCase() === mainKey.toLowerCase()) {
+          e.preventDefault();
+          handlePress();
+        }
+      }
+    });
+
+    // Handle press interactions
+    const { pressProps } = usePress({
+      onPress: handlePress
+    });
 
     const isActive =
       forcedIsActive ??
@@ -47,17 +71,15 @@ const ToolButton: FC<ToolButtonProps> = track(
         data-tip={shortcut ? `${label} (${shortcut})` : label}
       >
         <Button
+          ref={ref}
           type="button"
-          className={`
-            relative btn btn-${size}
-            ${isActive ? "btn-primary" : `btn-${variant}`}
-            flex items-center justify-center
-            min-h-12 h-12 w-12
-            p-2
-            text-base-content
-          `}
-          onPress={handlePress}
+          {...keyboardProps}
+          {...pressProps}
           aria-label={label}
+          className={`relative btn btn-${size} ${
+            isActive ? "btn-primary" : `btn-${variant}`
+          } flex items-center justify-center min-h-12 h-12 w-12 p-2 text-base-content focus:outline-none focus:ring-2 focus:ring-primary`}
+          onPress={handlePress}
           aria-pressed={isActive}
         >
           <Icon className="w-6 h-6" />
