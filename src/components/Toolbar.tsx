@@ -1,11 +1,11 @@
 import { track, useEditor } from "tldraw";
-import { Button } from "react-aria-components";
 import DrawingTools from "./tools/DrawingTools";
 import CoinFlipper from "./tools/CoinFlipper";
 import TimerWidget from "./tools/TimerWidget";
 import PriorityListWidget from "./tools/PriorityListWidget";
 import PageScroller from "./tools/PageScroller";
 import ThemeController from "./tools/ThemeController";
+import ModeToggle from "./tools/ModeToggle";
 import Logo from "./Logo";
 import { useState } from "react";
 import { RiArrowUpSLine, RiArrowDownSLine } from "react-icons/ri";
@@ -99,13 +99,7 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
 
             {/* Right Section */}
             <div className="flex items-center space-x-4 flex-shrink-0">
-              <Button
-                type="button"
-                onPress={onModeToggle}
-                className="btn btn-sm btn-outline"
-              >
-                {mode === "focus" ? "Focus Mode" : "Flex Mode"}
-              </Button>
+              <ModeToggle mode={mode} onModeToggle={onModeToggle} />
               <ThemeController />
             </div>
           </div>
