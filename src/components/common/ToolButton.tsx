@@ -41,18 +41,23 @@ const ToolButton: FC<ToolButtonProps> = track(
       onPress?.();
     };
 
-    // Handle keyboard shortcuts
+    // Handle keyboard shortcuts with exact key matching
     const { keyboardProps } = useKeyboard({
       onKeyDown: (e) => {
         if (!shortcut) return;
-        
-        const keys = shortcut.toLowerCase().split('+');
-        const mainKey = keys[keys.length - 1];
-        
-        if (e.key.toLowerCase() === mainKey.toLowerCase()) {
+
+        // Convert single letter shortcuts to match KeyboardEvent.key format
+        const expectedKey = shortcut.length === 1 
+          ? shortcut.toLowerCase()
+          : shortcut;
+
+        if (e.key.toLowerCase() === expectedKey) {
           e.preventDefault();
           handlePress();
+          // Allow propagation for unknown keys
+          return;
         }
+        e.continuePropagation();
       }
     });
 
