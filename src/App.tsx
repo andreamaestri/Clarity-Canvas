@@ -1,23 +1,30 @@
 import { useState } from "react";
 import { Tldraw } from "tldraw";
 import { Toolbar } from "./components/Toolbar";
+import { ThemeProvider } from "./context/ThemeContext";
+import ThemeController from "./components/tools/ThemeController";
 import "tldraw/tldraw.css";
-import '@fontsource-variable/lexend-deca/wght.css';
+import "@fontsource-variable/lexend-deca/wght.css";
 
-export default function CustomUiExample() {
+function App() {
   const [mode, setMode] = useState<"focus" | "flex">("focus");
 
   return (
-    <div style={{ position: "fixed", inset: 0 }}>
-      <Tldraw hideUi>
-        <Toolbar
-          mode={mode}
-          onModeToggle={() => setMode(mode === "focus" ? "flex" : "focus")}
-        />
-      </Tldraw>
-    </div>
+    <ThemeProvider>
+      <div style={{ position: "fixed", inset: 0 }}>
+        <Tldraw hideUi>
+          <Toolbar
+            mode={mode}
+            onModeToggle={() => setMode(mode === "focus" ? "flex" : "focus")}
+          />
+          <ThemeController />
+        </Tldraw>
+      </div>
+    </ThemeProvider>
   );
 }
+
+export default App;
 
 /* InitialSetup Component:
    When user first opens app:
@@ -30,7 +37,7 @@ export default function CustomUiExample() {
 
 /* UserSettings Component:
    On settings menu open:
-     Display current preferences 
+     Display current preferences
      If user toggles focus mode:
        Dim unnecessary UI elements
        Reduce animations
