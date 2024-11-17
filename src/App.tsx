@@ -1,12 +1,22 @@
-import { Tldraw } from 'tldraw'
-import 'tldraw/tldraw.css'
+import { useState } from "react";
+import { Tldraw } from "tldraw";
+import { Toolbar } from "./components/Toolbar";
+import "tldraw/tldraw.css";
+import '@fontsource-variable/lexend-deca/wght.css';
 
-export default function App() {
- return (
-  <div style={{ position: 'fixed', inset: 0 }}>
-   <Tldraw />
-  </div>
- )
+export default function CustomUiExample() {
+  const [mode, setMode] = useState<"focus" | "flex">("focus");
+
+  return (
+    <div style={{ position: "fixed", inset: 0 }}>
+      <Tldraw hideUi>
+        <Toolbar
+          mode={mode}
+          onModeToggle={() => setMode(mode === "focus" ? "flex" : "focus")}
+        />
+      </Tldraw>
+    </div>
+  );
 }
 
 /* InitialSetup Component:
