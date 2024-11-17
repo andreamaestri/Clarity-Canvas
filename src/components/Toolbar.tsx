@@ -1,4 +1,3 @@
-import React from "react";
 import { track, useEditor } from "tldraw";
 import { Button } from "react-aria-components";
 import DrawingTools from "./tools/DrawingTools";
