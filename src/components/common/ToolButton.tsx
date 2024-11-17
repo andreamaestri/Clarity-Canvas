@@ -37,7 +37,6 @@ const ToolButton: FC<ToolButtonProps> = track(
       onPress?.();
     };
 
-    // Use editor's current tool state directly
     const isActive =
       forcedIsActive ??
       (editor && toolId ? editor.getCurrentToolId() === toolId : false);
@@ -50,39 +49,22 @@ const ToolButton: FC<ToolButtonProps> = track(
         <Button
           type="button"
           className={`
-          relative btn btn-${size}
-          ${isActive ? "btn-primary" : `btn-${variant}`}
-          flex items-center justify-center
-          min-h-12 h-12 w-12
-          p-2
-        `}
+            relative btn btn-${size}
+            ${isActive ? "btn-primary" : `btn-${variant}`}
+            flex items-center justify-center
+            min-h-12 h-12 w-12
+            p-2
+            text-base-content
+          `}
           onPress={handlePress}
           aria-label={label}
           aria-pressed={isActive}
         >
-          {({ isPressed, isHovered }) => (
-            <div className="relative">
-              {isPressed && <PressHighlight />}
-              <Icon
-                className={`
-                w-6 h-6
-                text-base-content
-                ${isHovered ? "bg-accent bg-opacity-20" : ""}
-                ${isPressed ? "bg-accent bg-opacity-40" : ""}
-                rounded-full
-                transition-colors duration-200
-              `}
-              />
-            </div>
-          )}
+          <Icon className="w-6 h-6" />
         </Button>
       </div>
     );
-  },
-);
-
-const PressHighlight: FC = () => (
-  <span className="absolute inset-0 bg-accent opacity-50 rounded-full" />
+  }
 );
 
 export default ToolButton;

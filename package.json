@@ -12,6 +12,8 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.1.0",
+    "@dnd-kit/modifiers": "^7.0.0",
     "@fontsource-variable/inter": "^5.1.0",
     "@fontsource-variable/lexend-deca": "^5.1.0",
     "react": "^18.3.1",
