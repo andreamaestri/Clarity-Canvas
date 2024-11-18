@@ -4,7 +4,6 @@ import "tldraw/tldraw.css";
 import { Toolbar } from "./components/Toolbar";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import { InitialSetupModal } from "./components/InitialSetupmodal";
-import "@fontsource-variable/lexend-deca/wght.css";
 
 const TldrawWrapper = ({
   mode,
@@ -33,7 +32,11 @@ const TldrawWrapper = ({
       style={{ position: "fixed", inset: 0 }}
     >
       <Tldraw persistenceKey="clarity-canvas" hideUi inferDarkMode={darkMode}>
-        <Toolbar mode={mode} onModeToggle={onModeToggle} />
+        <Toolbar
+          mode={mode}
+          onModeToggle={onModeToggle}
+          orientation="horizontal"
+        />
       </Tldraw>
     </div>
   );

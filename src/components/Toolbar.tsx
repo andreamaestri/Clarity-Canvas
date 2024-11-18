@@ -1,21 +1,21 @@
 import { track, useEditor } from "tldraw";
 import DrawingTools from "./tools/DrawingTools";
-import { useRef, useState } from "react";
+import { useState, useRef } from "react";
 import { useToolbar } from "@react-aria/toolbar";
 import { Toolbar as AriaToolbar } from "react-aria-components";
 import ModeToggle from "./tools/ModeToggle";
 import ThemeController from "./tools/ThemeController";
 import Logo from "./Logo";
-
-interface ToolbarProps {
+export interface ToolbarProps {
   mode: "focus" | "flex";
   onModeToggle: () => void;
+  orientation: string; // Added to include 'orientation' property
 }
 
 export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
   const editor = useEditor();
+  const [isToolbarVisible] = useState(true);
   const toolbarRef = useRef<HTMLDivElement>(null);
-  const [isToolbarVisible, setIsToolbarVisible] = useState(true);
 
   const { toolbarProps } = useToolbar(
     {
@@ -43,11 +43,7 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
         </div>
 
         {/* Always show mode toggle */}
-        <ModeToggle
-          mode={mode}
-          onModeToggle={onModeToggle}
-          onToolVisibilityChange={setIsToolbarVisible}
-        />
+        <ModeToggle mode={mode} onModeToggle={onModeToggle} />
 
         {/* Show other tools only in flex mode */}
         {isToolbarVisible && mode === "flex" && (
