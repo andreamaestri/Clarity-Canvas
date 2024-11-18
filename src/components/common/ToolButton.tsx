@@ -3,7 +3,7 @@ import { Button } from "react-aria-components";
 import type { Editor } from "tldraw";
 import type { IconType } from "react-icons";
 import { track } from "tldraw";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 
 interface ToolButtonProps {
   editor?: Editor;
@@ -33,12 +33,12 @@ const ToolButton: FC<ToolButtonProps> = track(
   }) => {
     const ref = useRef<HTMLButtonElement>(null);
 
-    const handlePress = () => {
+    const handlePress = useCallback(() => {
       if (editor && toolId) {
         editor.setCurrentTool(toolId);
       }
       onPress?.();
-    };
+    }, [editor, toolId, onPress]);
 
     // Use useEffect for global keyboard event handling
     useEffect(() => {

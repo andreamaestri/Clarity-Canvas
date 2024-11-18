@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import ToolButton from "../common/ToolButton";
 import { RiFullscreenLine, RiFullscreenExitLine } from "react-icons/ri";
 import { useTheme } from "../../context/ThemeContext";
@@ -9,11 +9,11 @@ interface ModeToggleProps {
   onToolVisibilityChange?: (isVisible: boolean) => void;
 }
 
-const ModeToggle: React.FC<ModeToggleProps> = ({
+const ModeToggle = ({
   mode,
   onModeToggle,
   onToolVisibilityChange,
-}) => {
+}: ModeToggleProps) => {
   const { currentTheme, setTheme } = useTheme();
   const previousThemeRef = useRef(currentTheme);
   const isFocusMode = mode === "focus";
@@ -46,13 +46,7 @@ const ModeToggle: React.FC<ModeToggleProps> = ({
       }
       onToolVisibilityChange?.(false);
     }
-  }, [
-  }, [
-    isFocusMode,
-    setTheme,
-    currentTheme,
-    onToolVisibilityChange,
-  ]);
+  }, [isFocusMode, setTheme, currentTheme, onToolVisibilityChange]);
   return (
     <ToolButton
       label={isFocusMode ? "Focus Mode" : "Flex Mode"}
