@@ -45,6 +45,14 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     return currentTheme.includes('dark') || currentTheme === 'monochrome';
   }, [currentTheme]);
 
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
   const setTheme = useCallback((theme: string) => {
     const formattedTheme = theme.toLowerCase().replace(" ", "-");
     setCurrentTheme(formattedTheme);
@@ -54,22 +62,8 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (!currentThemeObject) return;
-
     document.documentElement.setAttribute("data-theme", currentTheme);
-    
-    // Set TLDraw canvas background color based on theme
-    const canvasBackground = currentThemeObject.colors.base100;
-    document.documentElement.style.setProperty(
-      "--canvas-background-color",
-      canvasBackground
-    );
-    
-    // Set TLDraw theme mode
-    document.documentElement.style.setProperty(
-      "--tl-theme",
-      isDarkMode ? "dark" : "light"
-    );
-  }, [currentTheme, currentThemeObject, isDarkMode]);
+  }, [currentTheme, currentThemeObject]);
 
   return (
     <ThemeContext.Provider value={{

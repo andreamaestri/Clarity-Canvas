@@ -26,6 +26,9 @@ importers:
       '@fontsource-variable/lexend-deca':
         specifier: ^5.1.0
         version: 5.1.0
+      '@react-aria/toolbar':
+        specifier: 3.0.0-beta.10
+        version: 3.0.0-beta.10(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1

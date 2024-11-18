@@ -42,7 +42,12 @@
   color: #ffffff;
 }
 
+/* Style the watermark */
 .tl-watermark_SEE-LICENSE {
+
+  bottom: 0 !important;
+  top: auto !important;
+  
   /* Style */
   padding: 4px 8px !important;
   background: oklch(var(--b1)) !important;
