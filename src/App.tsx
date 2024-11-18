@@ -1,62 +1,57 @@
-import type {
-  TLUiActionsContextType,
-  TLUiOverrides,
-  TLUiToolsContextType,
-} from "tldraw";
+import { useState, useEffect } from "react";
 import { Tldraw } from "tldraw";
 import "tldraw/tldraw.css";
-import { useState } from "react";
 import { Toolbar } from "./components/Toolbar";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
-import ThemeController from "./components/tools/ThemeController";
+import { InitialSetupModal } from "./components/InitialSetupmodal";
 import "@fontsource-variable/lexend-deca/wght.css";
 
-// Override Tldraw shortcuts
-const overrides: TLUiOverrides = {
-  actions(_editor, actions): TLUiActionsContextType {
-    const newActions = Object.keys(actions).reduce((acc, key) => {
-      acc[key] = { ...actions[key], kbd: undefined };
-      return acc;
-    }, {} as TLUiActionsContextType);
-
-    return newActions;
-  },
-  tools(_editor, tools): TLUiToolsContextType {
-    const newTools = Object.keys(tools).reduce((acc, key) => {
-      acc[key] = { ...tools[key], kbd: undefined };
-      return acc;
-    }, {} as TLUiToolsContextType);
-
-    return newTools;
-  },
-};
-
-const TldrawWrapper = () => {
-  const [mode, setMode] = useState<"focus" | "flex">("flex"); // Default to "flex" mode
+const TldrawWrapper = ({ mode, onModeToggle }: { mode: "focus" | "flex"; onModeToggle: () => void }) => {
   const { isDarkMode } = useTheme();
+  const [darkMode, setDarkMode] = useState(() => {
+    const stored = localStorage.getItem("DARK_MODE");
+    return stored ? stored === "true" : isDarkMode;
+  });
+
+  useEffect(() => {
+    if (darkMode !== isDarkMode) {
+      setDarkMode(isDarkMode);
+      localStorage.setItem("DARK_MODE", String(isDarkMode));
+      window.location.reload();
+    }
+  }, [isDarkMode, darkMode]);
 
   return (
-    <div className="tldraw__editor" style={{ position: "fixed", inset: 0 }}>
+    <div className={`tldraw__editor ${darkMode ? "dark-mode" : ""}`} style={{ position: "fixed", inset: 0 }}>
       <Tldraw
-        defaultDarkMode={isDarkMode}
+        persistenceKey="clarity-canvas"
         hideUi
-        persistenceKey="my-persistence-key"
-        overrides={overrides}
+        inferDarkMode={darkMode}
       >
-        <Toolbar
-          mode={mode}
-          onModeToggle={() => setMode(mode === "focus" ? "flex" : "focus")}
-        />
-        <ThemeController />
+        <Toolbar mode={mode} onModeToggle={onModeToggle} />
       </Tldraw>
     </div>
   );
 };
 
 function App() {
+  const [mode, setMode] = useState<"focus" | "flex">(() => {
+    return (localStorage.getItem("selectedMode") as "focus" | "flex") || "flex";
+  });
+
+  const handleSetupComplete = (data: { mode: "focus" | "flex" }) => {
+    console.log('Setup completed:', data);
+    setMode(data.mode);
+  };
+
+  const handleModeToggle = () => {
+    setMode((prevMode) => (prevMode === "focus" ? "flex" : "focus"));
+  };
+
   return (
     <ThemeProvider>
-      <TldrawWrapper />
+      <InitialSetupModal onComplete={handleSetupComplete} />
+      <TldrawWrapper mode={mode} onModeToggle={handleModeToggle} />
     </ThemeProvider>
   );
 }

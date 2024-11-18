@@ -4,99 +4,78 @@ import {
   useState,
   useEffect,
   ReactNode,
+  useMemo,
+  useCallback,
 } from "react";
+import { themes } from "../data/themeConstats";
+
+// Define interfaces at the top level
+interface Theme {
+  name: string;
+  previewColor: string;
+  description?: string;
+}
+
+interface ThemeContextType {
+  currentTheme: string;
+  setTheme: (theme: string) => void;
+  currentThemeObject: Theme | undefined;
+  isDarkMode: boolean;
+}
+
+// Create context at the top level with a default value
+const ThemeContext = createContext<ThemeContextType>({
+  currentTheme: "flex-light",
+  setTheme: () => {},
+  currentThemeObject: themes[0],
+  isDarkMode: false,
+});
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  // Define interfaces inside the component
-  interface Theme {
-    name: string;
-    previewColor: string;
-    description?: string;
-  }
+  const [currentTheme, setCurrentTheme] = useState(() => 
+    localStorage.getItem('theme') || 'flex-light'
+  );
 
-  interface ThemeContextType {
-    currentTheme: string;
-    setTheme: (themeName: string) => void;
-    currentThemeObject: Theme;
-    isDarkMode: boolean;
-  }
+  const currentThemeObject = useMemo(() => 
+    themes.find((t) => t.name.toLowerCase().replace(" ", "-") === currentTheme),
+    [currentTheme]
+  );
 
-  // Create context and initialize with null
-  const ThemeContext = createContext<ThemeContextType | null>(null);
-
-  const [currentTheme, setCurrentTheme] = useState("default");
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const themes: Theme[] = [
-    { name: "default", previewColor: "#ffffff" },
-    { name: "dark", previewColor: "#000000" },
-    // Add other themes as needed
-  ];
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", currentTheme);
-    const newIsDarkMode = currentTheme === "dark" || currentTheme === "black";
-    setIsDarkMode(newIsDarkMode);
-
-    const bgColor = newIsDarkMode ? "#1a1a1a" : "#ffffff";
-    document.documentElement.style.setProperty(
-      "--canvas-background-color",
-      bgColor,
-    );
-    document.documentElement.style.setProperty("--background", bgColor);
-    document.documentElement.style.setProperty(
-      "--tl-theme",
-      newIsDarkMode ? "dark" : "light",
-    );
-
-    const canvas = document.querySelector(".tl-canvas") as HTMLElement | null;
-    if (canvas) {
-      canvas.setAttribute("data-theme", newIsDarkMode ? "dark" : "light");
-    }
+  const isDarkMode = useMemo(() => {
+    return currentTheme.includes('dark') || currentTheme === 'monochrome';
   }, [currentTheme]);
 
-  const setTheme = (themeName: string) => {
-    setCurrentTheme(themeName.toLowerCase());
-  };
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }, [isDarkMode]);
 
-  const currentThemeObject =
-    themes.find((theme) => theme.name.toLowerCase() === currentTheme) ||
-    themes[0];
+  const setTheme = useCallback((theme: string) => {
+    const formattedTheme = theme.toLowerCase().replace(" ", "-");
+    setCurrentTheme(formattedTheme);
+    document.documentElement.setAttribute('data-theme', formattedTheme);
+    localStorage.setItem('theme', formattedTheme);
+  }, []);
 
-  const value: ThemeContextType = {
-    currentTheme,
-    setTheme,
-    currentThemeObject,
-    isDarkMode,
-  };
+  useEffect(() => {
+    if (!currentThemeObject) return;
+    document.documentElement.setAttribute("data-theme", currentTheme);
+  }, [currentTheme, currentThemeObject]);
 
   return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={{
+      currentTheme,
+      setTheme,
+      currentThemeObject,
+      isDarkMode,
+    }}>
+      {children}
+    </ThemeContext.Provider>
   );
 };
 
 // Custom hook to use the ThemeContext
-export const useTheme = () => {
-  // Define the same interfaces inside the hook
-  interface Theme {
-    name: string;
-    previewColor: string;
-    description?: string;
-  }
-
-  interface ThemeContextType {
-    currentTheme: string;
-    setTheme: (themeName: string) => void;
-    currentThemeObject: Theme;
-    isDarkMode: boolean;
-  }
-
-  // Create context inside the hook
-  const ThemeContext = createContext<ThemeContextType | null>(null);
-  const context = useContext(ThemeContext);
-
-  if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
-};
+export const useTheme = () => useContext(ThemeContext);
