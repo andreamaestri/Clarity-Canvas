@@ -1,5 +1,5 @@
 export interface Theme {
-    name: string;
-    previewColor: string;
-    description?: string;
-  }
+  name: string;
+  previewColor: string;
+  description?: string;
+}
