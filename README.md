@@ -146,8 +146,9 @@ Our project, **Clarity Canvas**, is an online whiteboard intended for collaborat
 
 ### Typography
 
-- **[Font 1]**: Used for headers because [reason for font choice].
-- **[Font 2]**: Used for body text due to its [reason for font choice, e.g., readability].
+**Sans-Serif (Default/System Font)**
+- Headers: Clean and modern, ensuring attention-grabbing readability.
+- Body Text: Ideal for digital legibility and simplicity.
 
 ## Testing
 
