@@ -7,6 +7,7 @@ import PageScroller from "./tools/PageScroller";
 import NoteTool from "./tools/NoteTool";
 import ModeToggle from "./tools/ModeToggle";
 import NukeButton from "./tools/NukeButton";
+import MenuTool from "./tools/MenuTool";
 import { useState } from "react";
 import { Toolbar as AriaToolbar } from "react-aria-components";
 import { RiArrowUpSLine } from "react-icons/ri";
@@ -51,6 +52,7 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
             )}
 
             <ModeToggle mode={mode} onModeToggle={onModeToggle} />
+            <MenuTool editor={editor} />
           </AriaToolbar>
         </div>
       )}
