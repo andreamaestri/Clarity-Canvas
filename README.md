@@ -147,6 +147,7 @@ Our project, **Clarity Canvas**, is an online whiteboard intended for collaborat
 ### Typography
 
 **Sans-Serif (Default/System Font)**
+
 - Headers: Clean and modern, ensuring attention-grabbing readability.
 - Body Text: Ideal for digital legibility and simplicity.
 
@@ -252,10 +253,8 @@ It was not the easiest to find time to meet with everyone and communicate what w
 
 - **[The Infinite Canvas SDK for React Developers](https://tldraw.dev/)**:  
   We used the tldraw SDK to add a collaborative whiteboard to our project.
-  
 - **[DaisyUI Theme Generator](https://daisyui.com/theme-generator/)**:  
   We used the DaisyUI Theme Generator to add custom themes to our project.
-  
 - **[React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html)**:  
   We used React Aria Components for buttons.
 
@@ -267,5 +266,3 @@ It was not the easiest to find time to meet with everyone and communicate what w
 
 - **[Tailwind CSS](https://tailwindcss.com/)**:  
   Tailwind CSS was used for utility-first styling, enabling a highly customizable and responsive layout for our project.
-
-  
