@@ -3,7 +3,7 @@ import { RiMeteorFill } from "react-icons/ri";
 import ToolButton from "../common/ToolButton";
 import type { Editor } from "tldraw";
 
-interface NukeButtonProps extends React.ComponentProps<'div'> {
+interface NukeButtonProps extends React.ComponentProps<"div"> {
   editor: Editor;
 }
 
