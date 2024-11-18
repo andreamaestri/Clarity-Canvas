@@ -1,6 +1,7 @@
 import { memo, useContext } from "react";
 import type { Editor } from "tldraw";
 import { ToolbarContext } from "react-aria-components";
+import { ToolbarProps } from "../Toolbar";
 import SelectTool from "./SelectTool";
 import DrawTool from "./DrawTool";
 import EraserTool from "./EraserTool";
@@ -18,7 +19,7 @@ interface DrawingToolsProps {
 }
 
 const DrawingTools = memo(({ editor }: DrawingToolsProps) => {
-  const { orientation } = useContext(ToolbarContext);
+  const { orientation } = useContext(ToolbarContext) as ToolbarProps;
   
   return (
     <div
@@ -53,7 +54,7 @@ const DrawingTools = memo(({ editor }: DrawingToolsProps) => {
 
       {/* Menu & Actions */}
       <div className="flex gap-2">
-        <MenuTool editor={editor} />
+        <MenuTool />
         <NukeButton editor={editor} />
       </div>
     </div>
