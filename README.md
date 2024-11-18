@@ -182,11 +182,13 @@ The project was deployed using [GitHub Pages](https://pages.github.com/) and [Gi
 
 ### Steps to Deploy:
 
-1. **Configure GitHub Pages**  
-   - Go to the repository's **Settings** → **Pages**.  
-   - Select the deployment branch (e.g., `main`) and the root folder or `/docs` folder for serving the site.  
+1. **Configure GitHub Pages**
 
-2. **Set Up GitHub Actions Workflow**  
+   - Go to the repository's **Settings** → **Pages**.
+   - Select the deployment branch (e.g., `main`) and the root folder or `/docs` folder for serving the site.
+
+2. **Set Up GitHub Actions Workflow**
+
    - Add a workflow file in `.github/workflows/`. Use the following configuration to automate the deployment:
 
    ```yaml
@@ -216,32 +218,32 @@ The project was deployed using [GitHub Pages](https://pages.github.com/) and [Gi
            with:
              github_token: ${{ secrets.GITHUB_TOKEN }}
              publish_dir: ./dist
+   ```
+
 3. **Push Changes**
 
-- Commit and push the workflow file to the `main` branch.  
+- Commit and push the workflow file to the `main` branch.
 - Any subsequent pushes to `main` will trigger the deployment.
 
 4. **Verify the Deployment**
 
-- Check the **Actions** tab on GitHub to ensure the workflow executed successfully.  
+- Check the **Actions** tab on GitHub to ensure the workflow executed successfully.
 - Confirm the site is live at [Clarity Canvas](https://andreamaestri.github.io/Clarity-Canvas/).
-
-
 
 ## Reflection
 
 ### Successes
 
 **Contributions from the whole team**
-Even though we were working in a challenging environment (React) which was new or unfamiliar to a lot of members of our team, everyone was able to find a way to contribute to the project. Often, collaboration happened between team members where skill sets varied - that way, the more experienced members of our team were able to guide those with less experience. 
+Even though we were working in a challenging environment (React) which was new or unfamiliar to a lot of members of our team, everyone was able to find a way to contribute to the project. Often, collaboration happened between team members where skill sets varied - that way, the more experienced members of our team were able to guide those with less experience.
 
 ### Challenges
 
 **Deciding on a project**
-We spent a lot of our allotted Hackathon time deciding on a project, which meant that we were behind schedule for most of the build. Going forward, it would be useful to assign a Scrum Master, and more clearly outline each members' skill sets and responsibilities. This way, we could make sure more of the features of our project were implemented in time. 
+We spent a lot of our allotted Hackathon time deciding on a project, which meant that we were behind schedule for most of the build. Going forward, it would be useful to assign a Scrum Master, and more clearly outline each members' skill sets and responsibilities. This way, we could make sure more of the features of our project were implemented in time.
 
 **Meetings and communication**
-It was not the easiest to find time to meet with everyone and communicate what was being done. 
+It was not the easiest to find time to meet with everyone and communicate what was being done.
 
 ### Future Improvements
 
@@ -249,10 +251,9 @@ It was not the easiest to find time to meet with everyone and communicate what w
 
 ## Credits
 
-
 - **[The Infinite Canvas SDk for React Developers](https://tldraw.dev/)**
-We used the tldraw SDk to add a collaborative whiteboard to our project.
+  We used the tldraw SDk to add a collaborative whiteboard to our project.
 - **[DaisyUI Theme Generator](https://daisyui.com/theme-generator/)**:
-We used the daisyUI Theme Generator to add custom themes to our project.
+  We used the daisyUI Theme Generator to add custom themes to our project.
 - **[React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html)**:
-We used React Aria Components for buttons. 
+  We used React Aria Components for buttons.
