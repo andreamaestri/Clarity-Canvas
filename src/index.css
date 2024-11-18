@@ -133,7 +133,9 @@ div.colour > img {
   padding: 0.6em 1.2em;
   font-size: 0.8em;
   line-height: 1.5;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
 }
 
 .tooltip:hover .tooltip-text {

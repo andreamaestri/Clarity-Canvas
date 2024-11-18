@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Get the necessary elements from the DOM
   const colourSchemeFields = document.querySelectorAll(
-    'input[name="colour-scheme"]'
+    'input[name="colour-scheme"]',
   );
 
   const colourfulOption = document.getElementById("colorful");
