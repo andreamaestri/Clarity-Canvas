@@ -250,9 +250,22 @@ It was not the easiest to find time to meet with everyone and communicate what w
 
 ## Credits
 
-- **[The Infinite Canvas SDk for React Developers](https://tldraw.dev/)**
-  We used the tldraw SDk to add a collaborative whiteboard to our project.
-- **[DaisyUI Theme Generator](https://daisyui.com/theme-generator/)**:
-  We used the daisyUI Theme Generator to add custom themes to our project.
-- **[React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html)**:
+- **[The Infinite Canvas SDK for React Developers](https://tldraw.dev/)**:  
+  We used the tldraw SDK to add a collaborative whiteboard to our project.
+  
+- **[DaisyUI Theme Generator](https://daisyui.com/theme-generator/)**:  
+  We used the DaisyUI Theme Generator to add custom themes to our project.
+  
+- **[React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html)**:  
   We used React Aria Components for buttons.
+
+- **[React Icons](https://react-icons.github.io/react-icons/)**:  
+  We used React Icons for adding customizable icons throughout the project.
+
+- **[Remix Icons](https://remixicon.com/)**:  
+  We incorporated Remix Icons for clean and scalable icons to enhance the user interface.
+
+- **[Tailwind CSS](https://tailwindcss.com/)**:  
+  Tailwind CSS was used for utility-first styling, enabling a highly customizable and responsive layout for our project.
+
+  
