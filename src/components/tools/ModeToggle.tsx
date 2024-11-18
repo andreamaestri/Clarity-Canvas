@@ -12,14 +12,9 @@ import Logo from "../Logo";
 interface ModeToggleProps {
   mode: "focus" | "flex";
   onModeToggle: () => void;
-  onToolVisibilityChange?: (isVisible: boolean) => void;
 }
 
-const ModeToggle = ({
-  mode,
-  onModeToggle,
-  onToolVisibilityChange,
-}: ModeToggleProps) => {
+const ModeToggle = ({ mode, onModeToggle }: ModeToggleProps) => {
   const isFocusMode = mode === "focus";
 
   useEffect(() => {
@@ -68,7 +63,7 @@ interface ToolbarProps {
 export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
   const editor = useEditor();
   const toolbarRef = useRef<HTMLDivElement>(null);
-  const [isToolbarVisible, setIsToolbarVisible] = useState(true);
+  const [isToolbarVisible] = useState(true);
 
   const { toolbarProps } = useToolbar(
     {
@@ -101,10 +96,7 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
         <ModeToggle 
           mode={mode} 
           onModeToggle={onModeToggle}
-          onToolVisibilityChange={setIsToolbarVisible}
         />
-
-        {/* Show other tools only in flex mode */}
         {isToolbarVisible && mode === "flex" && (
           <>
             <DrawingTools editor={editor} />

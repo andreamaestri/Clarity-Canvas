@@ -57,7 +57,7 @@ const MenuTool = track(({ editor }: MenuToolProps) => {
 
   const handleSave = () => {
     try {
-      const snapshot = editor.store.getSnapshot();
+      const snapshot = editor.getSnapshot();
       localStorage.setItem("canvas-data", JSON.stringify(snapshot));
       alert("Canvas saved successfully!");
     } catch (error) {
@@ -75,7 +75,7 @@ const MenuTool = track(({ editor }: MenuToolProps) => {
       }
 
       const snapshot = JSON.parse(savedData);
-      editor.store.loadSnapshot(snapshot);
+      editor.loadSnapshot(snapshot);
     } catch (error) {
       console.error("Load failed:", error);
       alert("Failed to load canvas");
@@ -100,7 +100,7 @@ const MenuTool = track(({ editor }: MenuToolProps) => {
         <Menu className="p-2 bg-base-200 rounded-lg shadow-lg min-w-[200px]">
           <MenuItem
             className="flex items-center gap-2 p-2 hover:bg-base-300 rounded-md cursor-pointer"
-            onSelect={handleSave}
+            onAction={handleSave}
           >
             <RiSaveLine />
             Save Canvas
@@ -108,7 +108,7 @@ const MenuTool = track(({ editor }: MenuToolProps) => {
 
           <MenuItem
             className="flex items-center gap-2 p-2 hover:bg-base-300 rounded-md cursor-pointer"
-            onSelect={handleLoad}
+            onAction={handleLoad}
           >
             <RiUploadLine />
             Load Canvas
@@ -116,7 +116,7 @@ const MenuTool = track(({ editor }: MenuToolProps) => {
 
           <MenuItem
             className="flex items-center gap-2 p-2 hover:bg-base-300 rounded-md cursor-pointer"
-            onSelect={handleExport}
+            onAction={handleExport}
           >
             <RiDownloadLine />
             Export as PNG
@@ -126,7 +126,7 @@ const MenuTool = track(({ editor }: MenuToolProps) => {
 
           <MenuItem
             className="flex items-center gap-2 p-2 hover:bg-base-300 rounded-md cursor-pointer text-error"
-            onSelect={handleClear}
+            onAction={handleClear}
           >
             <RiDeleteBin2Line />
             Clear Canvas

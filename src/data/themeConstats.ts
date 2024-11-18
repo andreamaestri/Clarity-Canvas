@@ -1,5 +1,3 @@
-import { Theme } from "./themes";
-
 export interface Theme {
   name: string;
   description: string;
@@ -104,7 +102,7 @@ export const themes: Theme[] = [
       primaryContent: "#F9FCFD",
       accent: "#FFB74D",
       base100: "#E8F4F7",
-      base300: "#FF6E6E",
+      base300: "#2D3E44",
     },
   },
 ];

@@ -18,8 +18,7 @@ interface DrawingToolsProps {
 }
 
 const DrawingTools = memo(({ editor }: DrawingToolsProps) => {
-  const { contextValue } = useContext(ToolbarContext);
-  const orientation = contextValue?.orientation;
+  const { orientation } = useContext(ToolbarContext);
   
   return (
     <div
