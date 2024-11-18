@@ -6,6 +6,7 @@ import PriorityListWidget from "./tools/PriorityListWidget";
 import PageScroller from "./tools/PageScroller";
 import NoteTool from "./tools/NoteTool";
 import ModeToggle from "./tools/ModeToggle";
+import NukeButton from "./tools/NukeButton";
 import { useState } from "react";
 import { Toolbar as AriaToolbar } from "react-aria-components";
 import { RiArrowUpSLine } from "react-icons/ri";
@@ -25,7 +26,10 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
     <>
       {isToolbarVisible && (
         <div className="fixed bottom-0 left-0 right-0 p-4 bg-base-200 shadow-lg rounded-t-xl overflow-x-auto">
-          <AriaToolbar aria-label="Application Toolbar" className="flex justify-center items-center gap-4">
+          <AriaToolbar
+            aria-label="Application Toolbar"
+            className="flex justify-center items-center gap-4"
+          >
             <div className="hidden md:flex items-center gap-2">
               <Logo className="h-8" />
               <span className="text-xl font-bold text-primary">
@@ -41,6 +45,7 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
                 <PriorityListWidget />
                 <PageScroller />
                 <NoteTool editor={editor} />
+                <NukeButton editor={editor} />
                 <ThemeController />
               </>
             )}
