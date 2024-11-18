@@ -4,6 +4,11 @@ import {
   DialogTrigger,
   Heading,
   Popover,
+  Button,
+  Dialog,
+  DialogTrigger,
+  Heading,
+  Popover,
 } from "react-aria-components";
 import { useState } from "react";
 import type { FC } from "react";
@@ -25,6 +30,18 @@ const CoinFlipper: FC = () => {
     }, 1000);
   };
 
+  return (
+    <>
+      <DialogTrigger>
+        <ToolButton
+          label="Flip Coin"
+          icon={RiCopperCoinLine}
+          onPress={flipCoin}
+          isActive={isFlipping}
+          variant="ghost"
+          shortcut="H"
+          size="md"
+        />
   return (
     <>
       <DialogTrigger>
