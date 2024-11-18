@@ -59,3 +59,17 @@
   opacity: 0.1;
   transition: all 0.2s ease !important;
 }
+
+/* Focus mode styles */
+.focus-mode {
+  filter: brightness(0.95) saturate(0.9);
+}
+
+.focus-mode .tldraw__editor {
+  filter: brightness(0.95) saturate(0.9);
+}
+
+/* Toolbar transition */
+.toolbar-transition {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
