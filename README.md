@@ -187,11 +187,11 @@ The project was deployed using [Deployment Platform] and can be accessed at [Liv
 
 ### Successes
 
-- **Getting everyone some work work**: Everybody got something to do according to their abilities;
+- **Getting everyone some work**: Everybody got something to do according to their abilities;
 
 ### Challenges
 
-- **Decising on a project**: This decision was very difficult and took a lot of time;
+- **Deciding on a project**: This decision was very difficult and took a lot of time;
 - **Meeting**: It was not the easiest to find time to meet with everyone and communicate what was being done
 
 ### Future Improvements
