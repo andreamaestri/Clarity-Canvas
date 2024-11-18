@@ -1,8 +1,24 @@
 # Clarity Canvas
 
+Deployed at: https://andreamaestri.github.io/Clarity-Canvas/
+
+## Contents
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [User Stories](#user-stories)
+- [Acceptance Criteria](#acceptance-criteria)
+- [Design](#design)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Reflection](#reflection)
+- [Credits](#credits)
+
 ## Project Overview
 
-This project was developed during a hackathon hosted by Code Institute. The goal was to create a white board collaborative app focused on people with ADHD. This app will have key features to improve productivity and reduce distractions.
+This project was developed during a hackathon hosted by [Code Institute in November 2024](https://hackathon.codeinstitute.net/hackathon/53/). The goal was to come up with an idea for an app which helps people with accessibility needs. We were allowed to use any technology that we felt was necessary.
+
+Our project, **Clarity Canvas**, is an online whiteboard intended for collaborative work. It offers a simplified digital workspace that optimises focus, with features for time management and organization. Our project was aimed at neurodivergent users who would benefit from being able to manage how stimulating their online work environment was.
 
 ## Features
 
