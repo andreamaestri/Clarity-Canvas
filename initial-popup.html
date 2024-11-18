@@ -1,106 +1,108 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/index.css" />
-    <title>Clarity Canvas</title>
-  </head>
 
-  <body>
-    <div id="pop-up">
-      <h1>Clarity Canvas</h1>
-      <form>
-        <!--Username-->
-        <fieldset class="tooltip">
-          <legend for="username">Name:</legend>
-          <input
-            type="text"
-            id="username"
-            placeholder="Your name here"
-            required
-          />
-          <span class="tooltip-text">
-            This name will be shown next to anything you write in the
-            worksspanace.
-          </span>
-        </fieldset>
-        <!--Mode-->
-        <fieldset class="tooltip">
-          <legend>Mode Type:</legend>
-          <span class="tooltip-text"
-            >The Mode Type will select the look of your workspace. Choose Focus
-            Mode for a low stimulation environment with minimal tools, and Flex
-            Mode for a high-stimulation environment with more tools.</span
-          >
-          <input
-            type="radio"
-            id="focus-mode"
-            name="mode-type"
-            value="Focus"
-            checked
-          />
-          <label for="focus-type">Focus</label><br />
-          <input type="radio" id="flex-mode" name="mode-type" value="Flex" />
-          <label for="flex-type">Flex</label>
-        </fieldset>
-        <!--Mode sub category: colour scheme-->
-        <fieldset>
-          <legend>Colour Scheme:</legend>
-          <div>
-            <input
-              type="radio"
-              name="colour-scheme"
-              id="light-mode"
-              value="Light"
-              checked
-            />
-            <label for="light-mode">Light Mode</label><br />
-          </div>
-          <div>
-            <input
-              type="radio"
-              name="colour-scheme"
-              id="dark-mode"
-              value="Dark"
-            />
-            <label for="dark-mode">Dark Mode</label><br />
-          </div>
-          <div>
-            <input
-              type="radio"
-              name="colour-scheme"
-              id="colorful"
-              value="Colors"
-            />
-            <label for="colorful">Colorful</label><br />
-          </div>
-          <div>
-            <input
-              type="radio"
-              name="colour-scheme"
-              id="monochrome"
-              value="Monochrome"
-            />
-            <label for="monochrome">Black and White</label>
-          </div>
-        </fieldset>
-        <!--Mode sub category: Initial Widgets in the space: appear when 'flex' is selected-->
-        <fieldset>
-          <legend>Initial Widgets:</legend>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="src/index.css" />
+  <title>Clarity Canvas</title>
+</head>
+
+<body class="setup">
+  <h1>Clarity Canvas</h1>
+  <div id="pop-up">
+    <form class="initial-setup">
+      <!-- Username -->
+      <fieldset class="tooltip">
+        <legend for="username">Name:</legend>
+        <input type="text" id="username" placeholder="Your name here" required aria-describedby="username-tooltip" />
+        <span id="username-tooltip" class="tooltip-text">
+          This name will be shown next to anything you write in the workspace.
+        </span>
+      </fieldset>
+
+      <!-- Mode -->
+      <fieldset class="tooltip">
+        <legend>Mode Type:</legend>
+        <span class="tooltip-text">
+          The Mode Type will select the look of your workspace. Choose Focus
+          Mode for a low stimulation environment with minimal tools, and Flex
+          Mode for a high-stimulation environment with more tools.
+        </span>
+        <input type="radio" id="focus-mode" name="mode-type" value="Focus" checked />
+        <label for="focus-mode">Focus</label><br />
+        <input type="radio" id="flex-mode" name="mode-type" value="Flex" />
+        <label for="flex-mode">Flex</label>
+      </fieldset>
+
+      <!-- Colour Scheme -->
+      <fieldset>
+        <legend>Colour Scheme:</legend>
+        <div class="colour">
+          <input type="radio" name="colour-scheme" id="light-mode" value="Light" checked />
+          <label for="light-mode">Light Mode</label>
+          <img id="flex-light" class="colour-preview" src="src/assets/flex-light.png"
+            alt="Light mode preview for Flex workspace" />
+          <img id="focus-light" class="colour-preview" src="src/assets/focus-light.png"
+            alt="Light mode preview for Focus workspace" />
+        </div>
+        <div class="colour">
+          <input type="radio" name="colour-scheme" id="dark-mode" value="Dark" />
+          <label for="dark-mode">Dark Mode</label>
+          <img id="flex-dark" class="colour-preview" src="src/assets/flex-dark.png"
+            alt="Dark mode preview for Flex workspace" />
+          <img id="focus-dark" class="colour-preview" src="src/assets/focus-dark.png"
+            alt="Dark mode preview for Focus workspace" />
+        </div>
+        <div class="colour">
+          <input type="radio" name="colour-scheme" id="colorful" value="Colors" />
+          <label for="colorful">Colorful</label>
+          <img class="colour-preview" src="src/assets/flex-colourful.png"
+            alt="Colorful mode preview for Flex workspace" />
+        </div>
+        <div class="colour">
+          <input type="radio" name="colour-scheme" id="monochrome" value="Monochrome" />
+          <label for="monochrome">Black and White</label>
+          <img class="colour-preview" src="src/assets/focus-monochrome.png"
+            alt="Monochrome mode preview for Focus workspace" />
+        </div>
+      </fieldset>
+
+      <!-- Initial Widgets -->
+      <fieldset id="initial-widgets">
+        <legend>Initial Widgets:</legend>
+        <div class="tooltip">
           <input type="checkbox" name="coin-flip" id="coin" />
-          <label for="coin">Coin Flip</label><br />
+          <label for="coin">Coin Flip</label>
+          <span class="tooltip-text">
+            A coin flipper, for each decision making
+        </div>
+        <div class="tooltip">
           <input type="checkbox" name="timer" id="timer" />
-          <label for="timer">Timer</label><br />
+          <label for="timer">Timer</label>
+          <span class="tooltip-text">
+            A timer to help you take regular breaks
+        </div>
+        <div class="tooltip">
           <input type="checkbox" name="to-do-list" id="to-do-list" />
-          <label for="to-do-list">To-do List</label><br />
+          <label for="to-do-list">To-do List</label>
+          <span class="tooltip-text">
+            A to-do list to help you keep track of tasks
+        </div>
+        <div class="tooltip">
           <input type="checkbox" name="white-noise" id="white-noise" />
           <label for="white-noise">White Noise</label>
-        </fieldset>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+          <span class="tooltip-text">
+            White noise player to help you focus
+        </div>
+      </fieldset>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script type="module" src="/src/main.tsx"></script>
+  <script src="popup.js"></script>
+</body>
+
 </html>
