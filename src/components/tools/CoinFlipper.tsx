@@ -1,4 +1,10 @@
-import { Button, Dialog, DialogTrigger, Heading, Popover } from "react-aria-components";
+import {
+  Button,
+  Dialog,
+  DialogTrigger,
+  Heading,
+  Popover,
+} from "react-aria-components";
 import { useState } from "react";
 import type { FC } from "react";
 import ToolButton from "../common/ToolButton";
@@ -28,6 +34,7 @@ const CoinFlipper: FC = () => {
           onPress={flipCoin}
           isActive={isFlipping}
           variant="ghost"
+          shortcut="H"
           size="md"
         />
 

@@ -3,8 +3,7 @@ import { Button } from "react-aria-components";
 import type { Editor } from "tldraw";
 import type { IconType } from "react-icons";
 import { track } from "tldraw";
-import { useKeyboard, usePress } from 'react-aria';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
 interface ToolButtonProps {
   editor?: Editor;
@@ -33,7 +32,7 @@ const ToolButton: FC<ToolButtonProps> = track(
     size = "sm",
   }) => {
     const ref = useRef<HTMLButtonElement>(null);
-    
+
     const handlePress = () => {
       if (editor && toolId) {
         editor.setCurrentTool(toolId);
@@ -41,30 +40,29 @@ const ToolButton: FC<ToolButtonProps> = track(
       onPress?.();
     };
 
-    // Handle keyboard shortcuts with exact key matching
-    const { keyboardProps } = useKeyboard({
-      onKeyDown: (e) => {
-        if (!shortcut) return;
+    // Use useEffect for global keyboard event handling
+    useEffect(() => {
+      if (!shortcut) return;
 
-        // Convert single letter shortcuts to match KeyboardEvent.key format
-        const expectedKey = shortcut.length === 1 
-          ? shortcut.toLowerCase()
-          : shortcut;
+      const handleKeyDown = (e: KeyboardEvent) => {
+        // Convert shortcut to lowercase for case-insensitive comparison
+        const key = e.key.toLowerCase();
+        const targetShortcut = shortcut.toLowerCase();
 
-        if (e.key.toLowerCase() === expectedKey) {
+        // Check if no input elements are focused
+        const activeElement = document.activeElement;
+        const isInputFocused = activeElement instanceof HTMLInputElement ||
+                             activeElement instanceof HTMLTextAreaElement;
+
+        if (key === targetShortcut && !isInputFocused && !e.metaKey && !e.ctrlKey && !e.altKey) {
           e.preventDefault();
           handlePress();
-          // Allow propagation for unknown keys
-          return;
         }
-        e.continuePropagation();
-      }
-    });
+      };
 
-    // Handle press interactions
-    const { pressProps } = usePress({
-      onPress: handlePress
-    });
+      window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [shortcut, handlePress]);
 
     const isActive =
       forcedIsActive ??
@@ -78,8 +76,6 @@ const ToolButton: FC<ToolButtonProps> = track(
         <Button
           ref={ref}
           type="button"
-          {...keyboardProps}
-          {...pressProps}
           aria-label={label}
           className={`relative btn btn-${size} ${
             isActive ? "btn-primary" : `btn-${variant}`

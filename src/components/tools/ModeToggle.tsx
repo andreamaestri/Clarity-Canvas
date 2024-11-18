@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import ToolButton from '../common/ToolButton';
-import { RiFullscreenLine, RiFullscreenExitLine } from 'react-icons/ri';
-import { useTheme } from '../../context/ThemeContext';
+import React, { useEffect, useRef } from "react";
+import ToolButton from "../common/ToolButton";
+import { RiFullscreenLine, RiFullscreenExitLine } from "react-icons/ri";
+import { useTheme } from "../../context/ThemeContext";
 
 interface ModeToggleProps {
   mode: "focus" | "flex";
@@ -9,7 +9,11 @@ interface ModeToggleProps {
   onToolVisibilityChange?: (isVisible: boolean) => void;
 }
 
-const ModeToggle: React.FC<ModeToggleProps> = ({ mode, onModeToggle, onToolVisibilityChange }) => {
+const ModeToggle: React.FC<ModeToggleProps> = ({
+  mode,
+  onModeToggle,
+  onToolVisibilityChange,
+}) => {
   const { currentTheme, setTheme } = useTheme();
   const previousThemeRef = useRef(currentTheme);
   const isFocusMode = mode === "focus";
@@ -22,20 +26,20 @@ const ModeToggle: React.FC<ModeToggleProps> = ({ mode, onModeToggle, onToolVisib
         await document.exitFullscreen();
       }
     } catch (err) {
-      console.error('Error toggling fullscreen:', err);
+      console.error("Error toggling fullscreen:", err);
     }
   };
 
   useEffect(() => {
     if (isFocusMode) {
-      if (currentTheme !== 'muted') {
+      if (currentTheme !== "muted") {
         previousThemeRef.current = currentTheme;
         setTheme("muted");
       }
       toggleFullscreen();
       onToolVisibilityChange?.(true);
     } else {
-      if (currentTheme === 'muted') {
+      if (currentTheme === "muted") {
         setTheme(previousThemeRef.current);
       }
       if (document.fullscreenElement) {
@@ -43,7 +47,13 @@ const ModeToggle: React.FC<ModeToggleProps> = ({ mode, onModeToggle, onToolVisib
       }
       onToolVisibilityChange?.(false);
     }
-  }, [isFocusMode, setTheme, currentTheme, onToolVisibilityChange, toggleFullscreen]);
+  }, [
+    isFocusMode,
+    setTheme,
+    currentTheme,
+    onToolVisibilityChange,
+    toggleFullscreen,
+  ]);
 
   return (
     <ToolButton
@@ -52,7 +62,7 @@ const ModeToggle: React.FC<ModeToggleProps> = ({ mode, onModeToggle, onToolVisib
       onPress={onModeToggle}
       isActive={isFocusMode}
       tooltipPosition="left"
-      shortcut="Ctrl+M"
+      shortcut="F"
     />
   );
 };
