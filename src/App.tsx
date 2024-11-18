@@ -1,9 +1,9 @@
-import {
+import type {
   TLUiActionsContextType,
   TLUiOverrides,
   TLUiToolsContextType,
-  Tldraw,
 } from "tldraw";
+import { Tldraw } from "tldraw";
 import "tldraw/tldraw.css";
 import { useState } from "react";
 import { Toolbar } from "./components/Toolbar";

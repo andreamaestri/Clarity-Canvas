@@ -18,19 +18,18 @@ const ModeToggle: React.FC<ModeToggleProps> = ({
   const previousThemeRef = useRef(currentTheme);
   const isFocusMode = mode === "focus";
 
-  const toggleFullscreen = async () => {
-    try {
-      if (!document.fullscreenElement) {
-        await document.documentElement.requestFullscreen();
-      } else {
-        await document.exitFullscreen();
-      }
-    } catch (err) {
-      console.error("Error toggling fullscreen:", err);
-    }
-  };
-
   useEffect(() => {
+    const toggleFullscreen = async () => {
+      try {
+        if (!document.fullscreenElement) {
+          await document.documentElement.requestFullscreen();
+        } else {
+          await document.exitFullscreen();
+        }
+      } catch (err) {
+        console.error("Error toggling fullscreen:", err);
+      }
+    };
     if (isFocusMode) {
       if (currentTheme !== "muted") {
         previousThemeRef.current = currentTheme;
@@ -48,13 +47,12 @@ const ModeToggle: React.FC<ModeToggleProps> = ({
       onToolVisibilityChange?.(false);
     }
   }, [
+  }, [
     isFocusMode,
     setTheme,
     currentTheme,
     onToolVisibilityChange,
-    toggleFullscreen,
   ]);
-
   return (
     <ToolButton
       label={isFocusMode ? "Focus Mode" : "Flex Mode"}

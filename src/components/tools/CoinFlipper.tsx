@@ -4,11 +4,6 @@ import {
   DialogTrigger,
   Heading,
   Popover,
-  Button,
-  Dialog,
-  DialogTrigger,
-  Heading,
-  Popover,
 } from "react-aria-components";
 import { useState } from "react";
 import type { FC } from "react";
@@ -42,18 +37,6 @@ const CoinFlipper: FC = () => {
           shortcut="H"
           size="md"
         />
-  return (
-    <>
-      <DialogTrigger>
-        <ToolButton
-          label="Flip Coin"
-          icon={RiCopperCoinLine}
-          onPress={flipCoin}
-          isActive={isFlipping}
-          variant="ghost"
-          shortcut="H"
-          size="md"
-        />
 
         <Popover placement="top">
           <Dialog className="card bg-secondary shadow-xl p-8">
@@ -75,17 +58,17 @@ const CoinFlipper: FC = () => {
                   ) : (
                     <span className="text-8xl hover:rotate-12 transition-transform">
                       🪙
-                      </span>
-                    </DialogTrigger>
+                    </span>
                   )}
                 </div>
 
                 <Button
-                  type="button"
-                  onClick={flipCoin}
+                  onPress={flipCoin}
                   className="btn btn-primary w-full text-lg font-semibold hover:scale-105 transition-transform"
-                  disabled={isFlipping}
-                ></button>
+                  isDisabled={isFlipping}
+                >
+                  Flip Again
+                </Button>
               </div>
             </div>
           </Dialog>
