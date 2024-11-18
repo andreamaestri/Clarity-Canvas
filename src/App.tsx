@@ -15,7 +15,7 @@ import "@fontsource-variable/lexend-deca/wght.css";
 const overrides: TLUiOverrides = {
   actions(_editor, actions): TLUiActionsContextType {
     const newActions = Object.keys(actions).reduce((acc, key) => {
-      acc[key] = { ...actions[key], kbd: null };
+      acc[key] = { ...actions[key], kbd: undefined };
       return acc;
     }, {} as TLUiActionsContextType);
 
@@ -23,7 +23,7 @@ const overrides: TLUiOverrides = {
   },
   tools(_editor, tools): TLUiToolsContextType {
     const newTools = Object.keys(tools).reduce((acc, key) => {
-      acc[key] = { ...tools[key], kbd: null };
+      acc[key] = { ...tools[key], kbd: undefined };
       return acc;
     }, {} as TLUiToolsContextType);
 
@@ -38,7 +38,7 @@ const TldrawWrapper = () => {
   return (
     <div className="tldraw__editor" style={{ position: "fixed", inset: 0 }}>
       <Tldraw
-        darkMode={isDarkMode}
+        defaultDarkMode={isDarkMode}
         hideUi
         persistenceKey="my-persistence-key"
         overrides={overrides}
