@@ -43,10 +43,7 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
         </div>
 
         {/* Always show mode toggle */}
-        <ModeToggle
-          mode={mode}
-          onModeToggle={onModeToggle}
-        />
+        <ModeToggle mode={mode} onModeToggle={onModeToggle} />
 
         {/* Show other tools only in flex mode */}
         {isToolbarVisible && mode === "flex" && (

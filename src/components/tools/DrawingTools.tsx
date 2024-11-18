@@ -20,7 +20,7 @@ interface DrawingToolsProps {
 
 const DrawingTools = memo(({ editor }: DrawingToolsProps) => {
   const { orientation } = useContext(ToolbarContext) as ToolbarProps;
-  
+
   return (
     <div
       role="group"
@@ -47,11 +47,14 @@ const DrawingTools = memo(({ editor }: DrawingToolsProps) => {
 
       {/* Utility Tools */}
       <div className="flex gap-2">
+        <MenuTool editor={editor} />
+        <NukeButton editor={editor} />
+      </div>
+      <div className="flex gap-2">
         <CoinFlipper />
         <TimerWidget />
         <PriorityListWidget />
       </div>
-
       {/* Menu & Actions */}
       <div className="flex gap-2">
         <MenuTool />
