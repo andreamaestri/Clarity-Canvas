@@ -55,14 +55,20 @@ button:focus-visible {
 }
 
 /*------------------- Popup Window -------------------*/
-body {
+.setup {
   max-width: 600px;
-  max-height: max-content;
-  margin: 0 auto;
+  min-height: fit-content;
+  margin: 40px auto;
   background-color: #1a1a1a;
   display: flex;
   flex-direction: column;
   border-radius: 12px;
+}
+
+.setup h1 {
+  margin: 0;
+  padding: 1rem;
+  color: white;
 }
 
 button[type="submit"] {
@@ -79,7 +85,10 @@ button[type="submit"] {
   align-items: center;
   gap: 1rem;
   border: white solid 1px;
+  color: white;
   border-radius: 8px;
+  padding: 1rem;
+  margin: 3rem;
 }
 
 .initial-setup fieldset {
@@ -130,7 +139,7 @@ div.colour > img {
 .tooltip:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
-  animation: fadeOut 1s 3s forwards;
+  animation: fadeOut 1s 2s forwards;
 }
 
 @keyframes fadeOut {
