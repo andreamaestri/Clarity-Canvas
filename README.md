@@ -1,79 +1,116 @@
-# Standardized Hackathon Readme
+# Clarity Canvas
 
 ## Project Overview
-This project was developed during a hackathon hosted by [Hackathon Organization]. The goal was to [brief description of the project's purpose].
+
+This project was developed during a hackathon hosted by Code Institute. The goal was to create a white board collaborative app focused on people with ADHD. This app will have key features to improve productivity and reduce distractions.
 
 ## Features
-- **[Feature 1]**: [Description of Feature 1]
-- **[Feature 2]**: [Description of Feature 2]
-- **[Feature 3]**: [Description of Feature 3]
-- **[Optional Additional Features]**: [Description of other features]
+
+- **Initial Setup**: When entering the work space, the user is welcomed with a popup window that prompts them to close what is the initial setup that they would like to use:
+
+  - They first must enter there name so that could be displayed with their contributions;
+  - Mode Selection: _Flex mode_ has all the tools available for choosing while _Focus mode_ does not offer widget selection. Focus mode is pre-selected;
+  - Colour scheme: 3 options for colors in the app will be given to the user to choose from based on their mode selection;
+  - Widgets selection: The user that choose the flex mode will have some widgets to choose from.
+
+    - White background noise for focusing purposes.
+
+- **Coin flip**: To help the user with decision making;
+- **Timer**: To help the user take constant breaks;
+- **Todo List**: To help the user managing their tasks;
+- **White noise**: Background calming noises to help the user focus;
+- **Post-it**: To interact with other the user can drag and drop a post-it style square where they can write in it;
+- **Color palette**: Three options per mode are given to the user:
+  - Flex mode offers a more vibrant colour palette;
+  - Focus mode offers a more washed out colour palette.
 
 ## Technologies Used
-- **HTML**: [Brief explanation of how it was used]
-- **JavaScript**: [Brief explanation of how it was used]
-- **CSS/Bootstrap**: [Brief explanation of how it was used]
+
+- **HTML**: Used for creating the initial popup window.
+- **JavaScript**: Used for connecting and making the initial popup window responsive.
+- **CSS**: For styling the page.
+- **React**: Creating and incorporating widgets and tools for the page.
+- **TLDraw**: Library used as the base for the project.
 - **[Additional Technologies]**: [Brief explanation of how they were used]
 
 ## User Stories
+
 - **As a user**, I want to [user goal], so that [user benefit].
 - **As a user**, I want to [user goal], so that [user benefit].
 - **As the site owner**, I want to [site owner goal], so that [site owner benefit].
 
 ## Acceptance Criteria
+
 ### Must Haves
+
 - **[Must Have 1]**: [Description of requirement]
 - **[Must Have 2]**: [Description of requirement]
 - **[Must Have 3]**: [Description of requirement]
 
 ### Should Haves
+
 - **[Should Have 1]**: [Description of requirement]
 - **[Should Have 2]**: [Description of requirement]
 - **[Should Have 3]**: [Description of requirement]
 
 ### Could Haves
+
 - **[Could Have 1]**: [Description of requirement]
 - **[Could Have 2]**: [Description of requirement]
 - **[Could Have 3]**: [Description of requirement]
 
 ## Design
+
 ### Wireframes
+
 [Wireframe images or description]
 
 ### Color Palette
+
 [Color palette description and justification]
 
 ### Typography
+
 - **[Font 1]**: Used for headers because [reason for font choice].
 - **[Font 2]**: Used for body text due to its [reason for font choice, e.g., readability].
 
 ## Testing
+
 ### Tools Used
+
 - **[Tool 1]**: [Purpose of the tool]
 - **[Tool 2]**: [Purpose of the tool]
 - **[Tool 3]**: [Purpose of the tool]
 
 ### Feature Testing
+
 - [Description of testing process for feature, e.g., navigation, responsiveness]
 
 ## Deployment
+
 The project was deployed using [Deployment Platform] and can be accessed at [Live Link]. Steps taken to deploy:
+
 1. [Deployment step 1]
 2. [Deployment step 2]
 
 ## Reflection
+
 ### Successes
+
 - **[Success 1]**: [Brief description]
 - **[Success 2]**: [Brief description]
 
 ### Challenges
+
 - **[Challenge 1]**: [Brief description of challenge faced]
 - **[Challenge 2]**: [Brief description of challenge faced]
 
 ### Future Improvements
+
 [Areas for improvement and future development]
 
 ## Credits
+
 - **[Credit 1]**: [Description of contribution or inspiration source]
 - **[Credit 2]**: [Description of contribution or inspiration source]
 - **[Tools and Resources]**: [Tools used like Google Images for images, Font Awesome for icons, etc.]
