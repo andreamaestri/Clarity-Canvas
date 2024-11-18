@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { track } from "tldraw";
 import type { Editor } from "tldraw";
 import { RiPencilFill } from "react-icons/ri";
 import ToolButton from "../common/ToolButton";
@@ -8,18 +8,14 @@ interface DrawToolProps {
   editor: Editor;
 }
 
-const DrawTool = memo(({ editor }: DrawToolProps) => {
+const DrawTool = track(({ editor }: DrawToolProps) => {
   const { currentThemeObject } = useTheme();
   
   const handleSelect = () => {
     if (!editor) return;
-    editor.setCurrentTool('draw');
+    editor.setCurrentTool("draw");
     editor.setStyle('color', currentThemeObject?.colors?.primary || '#000000');
     editor.setStyle('size', 'draw');
-    editor.updateInstanceState({
-      isToolLocked: true,
-      cursor: { type: 'cross', rotation: 0 }
-    });
   };
 
   return (
@@ -30,11 +26,9 @@ const DrawTool = memo(({ editor }: DrawToolProps) => {
       icon={RiPencilFill}
       shortcut="D"
       tooltipPosition="top"
-      onSelect={handleSelect}
+      onPress={handleSelect}
     />
   );
 });
-
-DrawTool.displayName = "DrawTool";
 
 export default DrawTool;

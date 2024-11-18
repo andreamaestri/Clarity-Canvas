@@ -1,29 +1,29 @@
 import { track } from "tldraw";
 import type { Editor } from "tldraw";
-import { RiEraserFill } from "react-icons/ri";
+import { RiText } from "react-icons/ri";
 import ToolButton from "../common/ToolButton";
 
-interface EraserToolProps {
+interface TextToolProps {
   editor: Editor;
 }
 
-const EraserTool = track(({ editor }: EraserToolProps) => {
+const TextTool = track(({ editor }: TextToolProps) => {
   const handleSelect = () => {
     if (!editor) return;
-    editor.setCurrentTool("eraser");
+    editor.setCurrentTool("text");
   };
 
   return (
     <ToolButton
       editor={editor}
-      toolId="eraser"
-      label="Eraser"
-      icon={RiEraserFill}
-      shortcut="E"
+      toolId="text"
+      label="Text"
+      icon={RiText}
+      shortcut="T"
       tooltipPosition="top"
       onPress={handleSelect}
     />
   );
 });
 
-export default EraserTool;
+export default TextTool;
