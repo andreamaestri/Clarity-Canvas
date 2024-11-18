@@ -12,14 +12,9 @@ import Logo from "../Logo";
 interface ModeToggleProps {
   mode: "focus" | "flex";
   onModeToggle: () => void;
-  onToolVisibilityChange?: (isVisible: boolean) => void;
 }
 
-const ModeToggle = ({
-  mode,
-  onModeToggle,
-  onToolVisibilityChange,
-}: ModeToggleProps) => {
+const ModeToggle = ({ mode, onModeToggle }: ModeToggleProps) => {
   const isFocusMode = mode === "focus";
 
   useEffect(() => {
@@ -68,14 +63,14 @@ interface ToolbarProps {
 export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
   const editor = useEditor();
   const toolbarRef = useRef<HTMLDivElement>(null);
-  const [isToolbarVisible, setIsToolbarVisible] = useState(true);
+  const [isToolbarVisible] = useState(true);
 
   const { toolbarProps } = useToolbar(
     {
       "aria-label": "Drawing Tools",
       orientation: "horizontal",
     },
-    toolbarRef
+    toolbarRef,
   );
 
   return (
@@ -92,19 +87,14 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
       >
         <div className="hidden md:flex items-center gap-2">
           <Logo className="h-8" />
-          <span className="text-xl font-bold text-primary">
-            Clarity Canvas
-          </span>
+          <span className="text-xl font-bold text-primary">Clarity Canvas</span>
         </div>
 
         {/* Always show mode toggle */}
-        <ModeToggle 
-          mode={mode} 
+        <ModeToggle
+          mode={mode}
           onModeToggle={onModeToggle}
-          onToolVisibilityChange={setIsToolbarVisible}
         />
-
-        {/* Show other tools only in flex mode */}
         {isToolbarVisible && mode === "flex" && (
           <>
             <DrawingTools editor={editor} />
