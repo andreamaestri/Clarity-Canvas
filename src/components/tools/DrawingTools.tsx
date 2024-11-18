@@ -26,7 +26,7 @@ const DrawingTools = memo(({ editor }: DrawingToolsProps) => {
       aria-label="Drawing Tools"
       style={{
         display: "flex",
-        flexDirection: orientation === 'vertical' ? 'column' : 'row',
+        flexDirection: orientation === "vertical" ? "column" : "row",
         gap: "8px",
       }}
     >

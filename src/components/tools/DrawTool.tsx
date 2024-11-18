@@ -10,7 +10,7 @@ interface DrawToolProps {
 
 const DrawTool = track(({ editor }: DrawToolProps) => {
   const { currentThemeObject } = useTheme();
-  
+
   const handleSelect = () => {
     if (!editor) return;
     editor.setCurrentTool("draw");
