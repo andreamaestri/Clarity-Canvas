@@ -7,8 +7,8 @@
 }
 
 .tldraw__editor {
-    background-color: var(--canvas-background-color);
-  }
+  background-color: var(--canvas-background-color);
+}
 
 /* Theme-Based Accent Colors */
 [data-theme="default"] .text-accent {

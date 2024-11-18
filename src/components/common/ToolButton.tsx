@@ -3,7 +3,7 @@ import { Button } from "react-aria-components";
 import type { Editor } from "tldraw";
 import type { IconType } from "react-icons";
 import { track } from "tldraw";
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect } from "react";
 
 interface ToolButtonProps {
   editor?: Editor;
@@ -51,17 +51,24 @@ const ToolButton: FC<ToolButtonProps> = track(
 
         // Check if no input elements are focused
         const activeElement = document.activeElement;
-        const isInputFocused = activeElement instanceof HTMLInputElement ||
-                             activeElement instanceof HTMLTextAreaElement;
+        const isInputFocused =
+          activeElement instanceof HTMLInputElement ||
+          activeElement instanceof HTMLTextAreaElement;
 
-        if (key === targetShortcut && !isInputFocused && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        if (
+          key === targetShortcut &&
+          !isInputFocused &&
+          !e.metaKey &&
+          !e.ctrlKey &&
+          !e.altKey
+        ) {
           e.preventDefault();
           handlePress();
         }
       };
 
-      window.addEventListener('keydown', handleKeyDown);
-      return () => window.removeEventListener('keydown', handleKeyDown);
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
     }, [shortcut, handlePress]);
 
     const isActive =
@@ -87,7 +94,7 @@ const ToolButton: FC<ToolButtonProps> = track(
         </Button>
       </div>
     );
-  }
+  },
 );
 
 export default ToolButton;
