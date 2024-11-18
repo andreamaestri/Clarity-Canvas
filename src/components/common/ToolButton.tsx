@@ -3,6 +3,7 @@ import { Button } from "react-aria-components";
 import type { Editor } from "tldraw";
 import type { IconType } from "react-icons";
 import { track } from "tldraw";
+import { useRef, useEffect, useCallback } from "react";
 
 interface ToolButtonProps {
   editor?: Editor;
@@ -30,14 +31,46 @@ const ToolButton: FC<ToolButtonProps> = track(
     variant = "ghost",
     size = "sm",
   }) => {
-    const handlePress = () => {
+    const ref = useRef<HTMLButtonElement>(null);
+
+    const handlePress = useCallback(() => {
       if (editor && toolId) {
         editor.setCurrentTool(toolId);
       }
       onPress?.();
-    };
+    }, [editor, toolId, onPress]);
 
-    // Use editor's current tool state directly
+    // Use useEffect for global keyboard event handling
+    useEffect(() => {
+      if (!shortcut) return;
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        // Convert shortcut to lowercase for case-insensitive comparison
+        const key = e.key.toLowerCase();
+        const targetShortcut = shortcut.toLowerCase();
+
+        // Check if no input elements are focused
+        const activeElement = document.activeElement;
+        const isInputFocused =
+          activeElement instanceof HTMLInputElement ||
+          activeElement instanceof HTMLTextAreaElement;
+
+        if (
+          key === targetShortcut &&
+          !isInputFocused &&
+          !e.metaKey &&
+          !e.ctrlKey &&
+          !e.altKey
+        ) {
+          e.preventDefault();
+          handlePress();
+        }
+      };
+
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [shortcut, handlePress]);
+
     const isActive =
       forcedIsActive ??
       (editor && toolId ? editor.getCurrentToolId() === toolId : false);
@@ -48,41 +81,20 @@ const ToolButton: FC<ToolButtonProps> = track(
         data-tip={shortcut ? `${label} (${shortcut})` : label}
       >
         <Button
+          ref={ref}
           type="button"
-          className={`
-          relative btn btn-${size}
-          ${isActive ? "btn-primary" : `btn-${variant}`}
-          flex items-center justify-center
-          min-h-12 h-12 w-12
-          p-2
-        `}
-          onPress={handlePress}
           aria-label={label}
+          className={`relative btn btn-${size} ${
+            isActive ? "btn-primary" : `btn-${variant}`
+          } flex items-center justify-center min-h-12 h-12 w-12 p-2 text-base-content focus:outline-none focus:ring-2 focus:ring-primary`}
+          onPress={handlePress}
           aria-pressed={isActive}
         >
-          {({ isPressed, isHovered }) => (
-            <div className="relative">
-              {isPressed && <PressHighlight />}
-              <Icon
-                className={`
-                w-6 h-6
-                text-base-content
-                ${isHovered ? "bg-accent bg-opacity-20" : ""}
-                ${isPressed ? "bg-accent bg-opacity-40" : ""}
-                rounded-full
-                transition-colors duration-200
-              `}
-              />
-            </div>
-          )}
+          <Icon className="w-6 h-6" />
         </Button>
       </div>
     );
   },
-);
-
-const PressHighlight: FC = () => (
-  <span className="absolute inset-0 bg-accent opacity-50 rounded-full" />
 );
 
 export default ToolButton;

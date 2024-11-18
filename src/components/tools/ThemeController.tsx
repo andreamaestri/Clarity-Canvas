@@ -4,11 +4,13 @@ import { ThemeButton } from "../common/ThemeButton";
 import { useTheme } from "../../context/ThemeContext";
 
 const ThemeController: React.FC = () => {
-  const { currentTheme, setTheme, currentThemeObject } = useTheme();
+  const { currentTheme, setTheme, currentThemeObject, isDarkMode } = useTheme();
 
   return (
     <DialogTrigger>
-      <Button className="flex items-center gap-3 text-base-content">
+      <Button
+        className={`flex items-center gap-3 ${isDarkMode ? "text-white" : "text-base-content"}`}
+      >
         <div
           className="w-6 h-6 rounded-full border-2"
           style={{ backgroundColor: currentThemeObject?.previewColor }}
@@ -17,8 +19,12 @@ const ThemeController: React.FC = () => {
       </Button>
       <Popover>
         <Dialog>
-          <div className="p-4 bg-base-200 rounded-lg max-h-[80vh] overflow-y-auto">
-            <h3 className="text-lg font-bold mb-4 text-base-content">
+          <div
+            className={`p-4 rounded-lg max-h-[80vh] overflow-y-auto ${isDarkMode ? "bg-gray-800" : "bg-base-200"}`}
+          >
+            <h3
+              className={`text-lg font-bold mb-4 ${isDarkMode ? "text-white" : "text-base-content"}`}
+            >
               Choose Theme
             </h3>
             <div className="grid grid-cols-2 gap-4">

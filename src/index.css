@@ -6,6 +6,10 @@
   font-family: "Lexend Deca Variable", sans-serif;
 }
 
+.tldraw__editor {
+  background-color: var(--canvas-background-color);
+}
+
 /* Theme-Based Accent Colors */
 [data-theme="default"] .text-accent {
   color: #646cff; /* Primary color for Default theme */
