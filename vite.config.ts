@@ -36,6 +36,6 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    exclude: ['@fontsource-variable/lexend-deca'],
+    exclude: ["@fontsource-variable/lexend-deca"],
   },
 });
