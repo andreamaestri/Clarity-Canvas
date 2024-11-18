@@ -72,7 +72,7 @@ This project was developed during a hackathon hosted by Code Institute. The goal
 
 ### Color Palette
 
-[Color palette description and justification]
+- All the six colour palettes were chosen to provide the user with options to improve productivity and focus given that our focus group is people with ADHD. So the user can choose to have more or less vibrant color schemes, more colours or only black and white.
 
 ### Typography
 
@@ -102,13 +102,12 @@ The project was deployed using [Deployment Platform] and can be accessed at [Liv
 
 ### Successes
 
-- **[Success 1]**: [Brief description]
-- **[Success 2]**: [Brief description]
+- **Getting everyone some work work**: Everybody got something to do according to their abilities;
 
 ### Challenges
 
-- **[Challenge 1]**: [Brief description of challenge faced]
-- **[Challenge 2]**: [Brief description of challenge faced]
+- **Decising on a project**: This decision was very difficult and took a lot of time;
+- **Meeting**: It was not the easiest to find time to meet with everyone and communicate what was being done
 
 ### Future Improvements
 
