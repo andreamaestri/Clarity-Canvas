@@ -147,6 +147,7 @@ Our project, **Clarity Canvas**, is an online whiteboard intended for collaborat
 ### Typography
 
 **Sans-Serif (Default/System Font)**
+
 - Headers: Clean and modern, ensuring attention-grabbing readability.
 - Body Text: Ideal for digital legibility and simplicity.
 
