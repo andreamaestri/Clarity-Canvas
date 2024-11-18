@@ -152,12 +152,7 @@ Our project, **Clarity Canvas**, is an online whiteboard intended for collaborat
 ## Testing
 
 ### Tools Used
-
-- **[Tool 1]**: [Purpose of the tool]
-- **[Tool 2]**: [Purpose of the tool]
-- **[Tool 3]**: [Purpose of the tool]
-
-### Feature Testing
+- Lighthouse
 
 ### Lighthouse testing
 
@@ -165,16 +160,19 @@ The project was tested through Lighthouse, and scored the following:
 Performance: 0-49 (Improvement needed)
 Accessibility: 85 (Improvement needed)
 Best Practices: 100;
-Seo: 95
+Seo: 91
 ![Lighthouse Scores Overview](src/docs/images-readme/Lighthouse-general.png)
 
 Accessibility scores in Lighthouse were low due to the following:
 
 1. Buttons did not have an accessible name (making it unusable for users who rely on screen readers).
+
+ ![Lighthouse Buttons without Accessible Names](src/docs/images-readme/Lighthouse-accessibility-one.png)
+
+
 2. Links did not have a discernable name (Link text (and alternate text for images, when used as links) that is discernible, unique, and focusable improves the navigation experience for screen reader users).
-   ![Lighthouse Accessibility Score Breakdown](src/docs/images-readme/Lighthouse-accessibility.png)
-   ![Lighthouse Buttons without Accessible Names](src/docs/images-readme/Lighthouse-accessibility-one.png)
-   ![Lighthouse Links without discernable names](src/docs/images-readme/Lighthouse-accessibility-two)
+   
+   ![Lighthouse Links without discernable names](src/docs/images-readme/Lighthouse-accessibility-two.png)
 
 ## Deployment
 
