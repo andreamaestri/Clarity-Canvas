@@ -4,7 +4,8 @@ export interface Theme {
   previewColor: string;
 }
 
-export const themes: Theme[] = [ {
+export const themes: Theme[] = [
+  {
     name: "Focus Light",
     description: "Soft and light colors with high contrast",
     previewColor: "#77AEBB",
