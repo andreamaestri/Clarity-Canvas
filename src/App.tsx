@@ -5,7 +5,7 @@ import type {
 } from "tldraw";
 import { Tldraw } from "tldraw";
 import "tldraw/tldraw.css";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Toolbar } from "./components/Toolbar";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import ThemeController from "./components/tools/ThemeController";
@@ -32,16 +32,32 @@ const overrides: TLUiOverrides = {
 };
 
 const TldrawWrapper = () => {
-  const [mode, setMode] = useState<"focus" | "flex">("flex"); // Default to "flex" mode
-  const { isDarkMode } = useTheme();
+  const [mode, setMode] = useState<"focus" | "flex">("flex");
+  const { isDarkMode, currentThemeObject } = useTheme();
+
+  // Convert DaisyUI theme colors to TLDraw theme
+  const tldrawTheme = useMemo(() => ({
+    background: currentThemeObject?.colors.base100 || (isDarkMode ? '#1a1a1a' : '#ffffff'),
+    text: currentThemeObject?.colors.baseContent || (isDarkMode ? '#ffffff' : '#000000'),
+    // Add other canvas-specific colors
+    canvasBackground: currentThemeObject?.colors.base100,
+    canvasText: currentThemeObject?.colors.baseContent,
+    selectFill: currentThemeObject?.colors.primary + '20', // Adding transparency
+    selectStroke: currentThemeObject?.colors.primary,
+  }), [currentThemeObject, isDarkMode]);
 
   return (
     <div className="tldraw__editor" style={{ position: "fixed", inset: 0 }}>
       <Tldraw
         defaultDarkMode={isDarkMode}
         hideUi
-        persistenceKey="my-persistence-key"
+        persistenceKey="clarity-canvas"
         overrides={overrides}
+        theme={tldrawTheme}
+        components={{
+          // Override the Grid component to return null (removes grid)
+          Grid: () => null,
+        }}
       >
         <Toolbar
           mode={mode}

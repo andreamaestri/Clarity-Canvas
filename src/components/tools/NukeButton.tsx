@@ -1,17 +1,15 @@
+import React from "react";
 import { RiMeteorFill } from "react-icons/ri";
 import ToolButton from "../common/ToolButton";
-import { useEditor } from "tldraw";
+import type { Editor } from "tldraw";
 
 interface NukeButtonProps {
-  onTriggerExplosion?: () => void;
+  editor: Editor;
 }
 
-const NukeButton: React.FC<NukeButtonProps> = ({ onTriggerExplosion }) => {
-  const editor = useEditor();
-
+const NukeButton: React.FC<NukeButtonProps> = ({ editor }) => {
   const handleNuke = () => {
     editor.selectAll().deleteShapes(editor.getSelectedShapeIds());
-    onTriggerExplosion?.();
   };
 
   return (

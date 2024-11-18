@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { Button } from "react-aria-components";
+import { Button, Tooltip, TooltipTrigger } from "react-aria-components";
 import type { Editor } from "tldraw";
 import type { IconType } from "react-icons";
 import { track } from "tldraw";
@@ -45,10 +45,11 @@ const ToolButton: FC<ToolButtonProps> = track(
       if (!shortcut) return;
 
       const handleKeyDown = (e: KeyboardEvent) => {
-        // Convert shortcut to lowercase for case-insensitive comparison
-        const key = e.key.toLowerCase();
-        const targetShortcut = shortcut.toLowerCase();
-
+        // Parse the shortcut string
+        const parts = shortcut.toLowerCase().split('+');
+        const key = parts[parts.length - 1];
+        const requiresAlt = parts.includes('alt');
+        
         // Check if no input elements are focused
         const activeElement = document.activeElement;
         const isInputFocused =
@@ -56,11 +57,11 @@ const ToolButton: FC<ToolButtonProps> = track(
           activeElement instanceof HTMLTextAreaElement;
 
         if (
-          key === targetShortcut &&
+          e.key.toLowerCase() === key &&
           !isInputFocused &&
           !e.metaKey &&
           !e.ctrlKey &&
-          !e.altKey
+          e.altKey === requiresAlt
         ) {
           e.preventDefault();
           handlePress();
@@ -76,10 +77,7 @@ const ToolButton: FC<ToolButtonProps> = track(
       (editor && toolId ? editor.getCurrentToolId() === toolId : false);
 
     return (
-      <div
-        className={`tooltip tooltip-${tooltipPosition}`}
-        data-tip={shortcut ? `${label} (${shortcut})` : label}
-      >
+      <TooltipTrigger delay={0}>
         <Button
           ref={ref}
           type="button"
@@ -92,7 +90,14 @@ const ToolButton: FC<ToolButtonProps> = track(
         >
           <Icon className="w-6 h-6" />
         </Button>
-      </div>
+        <Tooltip 
+          placement={tooltipPosition}
+          offset={6}
+          className="z-[999999] bg-base-300 text-base-content px-2 py-1 rounded shadow-lg select-none"
+        >
+          {shortcut ? `${label} (${shortcut})` : label}
+        </Tooltip>
+      </TooltipTrigger>
     );
   },
 );

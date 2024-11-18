@@ -1,107 +1,110 @@
+import { Theme } from "./themes";
+
+export interface Theme {
+  name: string;
+  description: string;
+  previewColor: string;
+  colors: {
+    primary: string;
+    baseContent: string;
+    secondary: string;
+    secondaryContent: string;
+    primaryContent: string;
+    accent: string;
+    base100: string;
+    base300: string;
+  };
+}
+
 export const themes: Theme[] = [
   {
-    name: "Default",
-    description: "Clean and modern look",
-    previewColor: "#570DF8",
+    name: "Focus Light",
+    description: "Soft and light colors with high contrast",
+    previewColor: "#77AEBB",
+    colors: {
+      primary: "#cdc4cf",
+      baseContent: "#80858a",
+      secondary: "#f3d3d7",
+      secondaryContent: "#ffffff",
+      primaryContent: "#000000",
+      accent: "#bae3d5",
+      base100: "#f7f7f7",
+      base300: "#d0d4d9",
+    },
   },
   {
-    name: "Retro",
-    description: "Classic vintage style",
-    previewColor: "#E8B059",
+    name: "Focus Dark",
+    description: "Deep and dark colors with vibrant highlights",
+    previewColor: "#92B3BB",
+    colors: {
+      primary: "#77AEBB",
+      baseContent: "#E0E0E0",
+      secondary: "#79C279",
+      secondaryContent: "#E0E0E0",
+      primaryContent: "#E0E0E0",
+      accent: "#79C279",
+      base100: "#141717",
+      base300: "#1E2424",
+    },
   },
   {
-    name: "Cyberpunk",
-    description: "Futuristic neon design",
-    previewColor: "#FF00FF",
+    name: "Monochrome",
+    description: "Shades of gray for a minimalist look",
+    previewColor: "#7D7D7D",
+    colors: {
+      primary: "#7D7D7D",
+      baseContent: "#E0E0E0",
+      secondary: "#4D4D4D",
+      secondaryContent: "#E0E0E0",
+      primaryContent: "#E0E0E0",
+      accent: "#BFBFBF",
+      base100: "#121212",
+      base300: "#1E1E1E",
+    },
   },
   {
-    name: "Valentine",
-    description: "Soft and romantic tones",
-    previewColor: "#FF69B4",
+    name: "Flex Light",
+    description: "Fresh and light with soft contrasts",
+    previewColor: "#77AEBB",
+    colors: {
+      primary: "#77AEBB",
+      baseContent: "#2D3E44",
+      secondary: "#79C279",
+      secondaryContent: "#2D3E44",
+      primaryContent: "#F5FCFB",
+      accent: "#79C279",
+      base100: "#E8F5F4",
+      base300: "#2D3E44",
+    },
   },
   {
-    name: "Aqua",
-    description: "Cool ocean-inspired theme",
-    previewColor: "#00FFFF",
+    name: "Flex Dark",
+    description: "Deep and subdued with green accents",
+    previewColor: "#77AEBB",
+    colors: {
+      primary: "#77AEBB",
+      baseContent: "#D8E4E6",
+      secondary: "#4C8A4C",
+      secondaryContent: "#D8E4E6",
+      primaryContent: "#D8E4E6",
+      accent: "#4C8A4C",
+      base100: "#121717",
+      base300: "#1B2424",
+    },
   },
   {
-    name: "Light",
-    description: "Clean light theme",
-    previewColor: "#ffffff",
+    name: "Colourful",
+    description: "Vibrant and diverse palette",
+    previewColor: "#FFB74D",
+    colors: {
+      primary: "#77AEBB",
+      baseContent: "#2D3E44",
+      secondary: "#79C279",
+      secondaryContent: "#2D3E44",
+      primaryContent: "#F9FCFD",
+      accent: "#FFB74D",
+      base100: "#E8F4F7",
+      base300: "#FF6E6E",
+    },
   },
-  {
-    name: "Dark",
-    description: "Elegant dark theme",
-    previewColor: "#2a303c",
-  },
-  {
-    name: "Cupcake",
-    description: "Pastel colors",
-    previewColor: "#faf7f5",
-  },
-  {
-    name: "Bumblebee",
-    description: "Yellow and black",
-    previewColor: "#fbbf24",
-  },
-  {
-    name: "Emerald",
-    description: "Green professional",
-    previewColor: "#10b981",
-  },
-  {
-    name: "Corporate",
-    description: "Business style",
-    previewColor: "#4b6bfb",
-  },
-  {
-    name: "Synthwave",
-    description: "80s synthwave",
-    previewColor: "#e779c1",
-  },
-  {
-    name: "Halloween",
-    description: "Spooky theme",
-    previewColor: "#ff7518",
-  },
-  {
-    name: "Garden",
-    description: "Natural and fresh",
-    previewColor: "#5c7f67",
-  },
-  { name: "Forest", description: "Deep woods", previewColor: "#1eb854" },
-  { name: "Lofi", description: "Soft and calm", previewColor: "#808080" },
-  {
-    name: "Pastel",
-    description: "Light soft colors",
-    previewColor: "#ffb3ba",
-  },
-  {
-    name: "Fantasy",
-    description: "Magical theme",
-    previewColor: "#bf95f9",
-  },
-  {
-    name: "Wireframe",
-    description: "Minimalist design",
-    previewColor: "#b8b8b8",
-  },
-  { name: "Black", description: "Pure black", previewColor: "#000000" },
-  { name: "Luxury", description: "Gold and black", previewColor: "#d4af37" },
-  { name: "Dracula", description: "Dark purple", previewColor: "#ff79c6" },
-  { name: "Cmyk", description: "Printer colors", previewColor: "#00bcd4" },
-  { name: "Autumn", description: "Fall colors", previewColor: "#d45d00" },
-  {
-    name: "Business",
-    description: "Professional blue",
-    previewColor: "#1e3a8a",
-  },
-  { name: "Acid", description: "Bright neon", previewColor: "#00ff00" },
-  { name: "Lemonade", description: "Fresh yellow", previewColor: "#fef08a" },
-  { name: "Night", description: "Dark blue", previewColor: "#1a1b26" },
-  { name: "Coffee", description: "Warm brown", previewColor: "#6f4e37" },
-  { name: "Winter", description: "Cold blues", previewColor: "#d3e3f7" },
-  { name: "Dim", description: "Low contrast", previewColor: "#2d3436" },
-  { name: "Nord", description: "Arctic colors", previewColor: "#5e81ac" },
-  { name: "Sunset", description: "Warm evening", previewColor: "#fa8072" },
 ];

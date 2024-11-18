@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogTrigger, Popover } from "react-aria-components";
-import { themes } from "../../data/themes";
+import { themes } from "../../data/themeConstats";
 import { ThemeButton } from "../common/ThemeButton";
 import { useTheme } from "../../context/ThemeContext";
 
