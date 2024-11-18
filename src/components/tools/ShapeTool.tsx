@@ -11,7 +11,7 @@ const ShapeTool = track(({ editor }: ShapeToolProps) => {
   const handleSelect = () => {
     if (!editor) return;
     editor.setCurrentTool("geo");
-    editor.setStyle('geo', 'rectangle'); // Default to rectangle shape
+    editor.setStyle("geo", "rectangle"); // Default to rectangle shape
   };
 
   return (

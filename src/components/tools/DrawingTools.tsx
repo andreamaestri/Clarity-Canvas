@@ -20,14 +20,14 @@ interface DrawingToolsProps {
 const DrawingTools = memo(({ editor }: DrawingToolsProps) => {
   const { contextValue } = useContext(ToolbarContext);
   const orientation = contextValue?.orientation;
-  
+
   return (
     <div
       role="group"
       aria-label="Drawing Tools"
       style={{
         display: "flex",
-        flexDirection: orientation === 'vertical' ? 'column' : 'row',
+        flexDirection: orientation === "vertical" ? "column" : "row",
         gap: "8px",
       }}
     >

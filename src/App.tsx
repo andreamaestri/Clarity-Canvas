@@ -6,7 +6,13 @@ import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import { InitialSetupModal } from "./components/InitialSetupmodal";
 import "@fontsource-variable/lexend-deca/wght.css";
 
-const TldrawWrapper = ({ mode, onModeToggle }: { mode: "focus" | "flex"; onModeToggle: () => void }) => {
+const TldrawWrapper = ({
+  mode,
+  onModeToggle,
+}: {
+  mode: "focus" | "flex";
+  onModeToggle: () => void;
+}) => {
   const { isDarkMode } = useTheme();
   const [darkMode, setDarkMode] = useState(() => {
     const stored = localStorage.getItem("DARK_MODE");
@@ -22,12 +28,11 @@ const TldrawWrapper = ({ mode, onModeToggle }: { mode: "focus" | "flex"; onModeT
   }, [isDarkMode, darkMode]);
 
   return (
-    <div className={`tldraw__editor ${darkMode ? "dark-mode" : ""}`} style={{ position: "fixed", inset: 0 }}>
-      <Tldraw
-        persistenceKey="clarity-canvas"
-        hideUi
-        inferDarkMode={darkMode}
-      >
+    <div
+      className={`tldraw__editor ${darkMode ? "dark-mode" : ""}`}
+      style={{ position: "fixed", inset: 0 }}
+    >
+      <Tldraw persistenceKey="clarity-canvas" hideUi inferDarkMode={darkMode}>
         <Toolbar mode={mode} onModeToggle={onModeToggle} />
       </Tldraw>
     </div>
@@ -40,7 +45,7 @@ function App() {
   });
 
   const handleSetupComplete = (data: { mode: "focus" | "flex" }) => {
-    console.log('Setup completed:', data);
+    console.log("Setup completed:", data);
     setMode(data.mode);
   };
 

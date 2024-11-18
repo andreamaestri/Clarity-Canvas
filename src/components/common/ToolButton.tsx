@@ -46,10 +46,10 @@ const ToolButton: FC<ToolButtonProps> = track(
 
       const handleKeyDown = (e: KeyboardEvent) => {
         // Parse the shortcut string
-        const parts = shortcut.toLowerCase().split('+');
+        const parts = shortcut.toLowerCase().split("+");
         const key = parts[parts.length - 1];
-        const requiresAlt = parts.includes('alt');
-        
+        const requiresAlt = parts.includes("alt");
+
         // Check if no input elements are focused
         const activeElement = document.activeElement;
         const isInputFocused =
@@ -90,7 +90,7 @@ const ToolButton: FC<ToolButtonProps> = track(
         >
           <Icon className="w-6 h-6" />
         </Button>
-        <Tooltip 
+        <Tooltip
           placement={tooltipPosition}
           offset={6}
           className="z-[999999] bg-base-300 text-base-content px-2 py-1 rounded shadow-lg select-none"
