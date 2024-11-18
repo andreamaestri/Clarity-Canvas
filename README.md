@@ -4,15 +4,17 @@
 > Contents
 
 ## Project Overview
-This project was developed during a hackathon hosted by [Code Institute in November 2024](https://hackathon.codeinstitute.net/hackathon/53/). The goal was to come up with an idea for an app which helps people with accessibility needs. We were allowed to use any technology that we felt was necessary. 
 
-Our project, **Clarity Canvas**, is an online whiteboard intended for collaborative work and brainstorming sessions. It offers a simplified digital workspace that optimises focus, with features for time management and organization. Our project was aimed at users with ADHD, who would benefit from being able to manage how stimulating their online work environment was. 
+This project was developed during a hackathon hosted by [Code Institute in November 2024](https://hackathon.codeinstitute.net/hackathon/53/). The goal was to come up with an idea for an app which helps people with accessibility needs. We were allowed to use any technology that we felt was necessary.
 
-> could talk more about the requirements of users with ADHD here? 
+Our project, **Clarity Canvas**, is an online whiteboard intended for collaborative work and brainstorming sessions. It offers a simplified digital workspace that optimises focus, with features for time management and organization. Our project was aimed at users with ADHD, who would benefit from being able to manage how stimulating their online work environment was.
+
+> could talk more about the requirements of users with ADHD here?
 
 ## Features
+
 **[Flex Mode / Focus Mode]**
-The user is able to toggle between Flex Mode and Focus Mode depending on the level of stimulation they need to optimize their focus. In Flex Mode, more features are available (including a coin flipper, timer, and to-do list) and the workspace is more colourful. In Focus Mode, features are stripped back to only the essentials, and the colours are slightly dulled. This way, if a user needs to de-clutter their digital space, they can do so simply by toggling between modes. 
+The user is able to toggle between Flex Mode and Focus Mode depending on the level of stimulation they need to optimize their focus. In Flex Mode, more features are available (including a coin flipper, timer, and to-do list) and the workspace is more colourful. In Focus Mode, features are stripped back to only the essentials, and the colours are slightly dulled. This way, if a user needs to de-clutter their digital space, they can do so simply by toggling between modes.
 
 > Picture of the difference between flew and focus modes
 
@@ -21,6 +23,7 @@ The user is able to toggle between Flex Mode and Focus Mode depending on the lev
 - **[Optional Additional Features]**: [Description of other features]
 
 ## Technologies Used
+
 - **HTML**: [Brief explanation of how it was used]
 - **JavaScript**: [Brief explanation of how it was used]
 - **CSS/Bootstrap**: [Brief explanation of how it was used]
@@ -29,16 +32,16 @@ The user is able to toggle between Flex Mode and Focus Mode depending on the lev
 ## User Stories
 
 > To be reviewed
-> 
-**Setup and Customisation User Stories:**
-As a new user, I want to be prompted with an initial setup screen
-so that I can quickly customise my workspace with options like font size, mode selection (focus or normal), and colour scheme.
-As a user, I want to choose between two modes: “Focus Mode” (low stimulation) and “Normal Mode” (high-medium stimulation)
-so that the workspace environment can match my current focus needs.
-As a user, I want to select a colour scheme from an accessible palette
-so that my contributions are visually distinct and the interface is comfortable for my eyes.
-As a user, I want to customise the initial set of widgets available on my workspace
-so that I can start with tools that best support my focus and productivity.
+>
+> **Setup and Customisation User Stories:**
+> As a new user, I want to be prompted with an initial setup screen
+> so that I can quickly customise my workspace with options like font size, mode selection (focus or normal), and colour scheme.
+> As a user, I want to choose between two modes: “Focus Mode” (low stimulation) and “Normal Mode” (high-medium stimulation)
+> so that the workspace environment can match my current focus needs.
+> As a user, I want to select a colour scheme from an accessible palette
+> so that my contributions are visually distinct and the interface is comfortable for my eyes.
+> As a user, I want to customise the initial set of widgets available on my workspace
+> so that I can start with tools that best support my focus and productivity.
 
 **Central Whiteboard User Stories:**
 As a user, I want a central whiteboard space that fills most of the screen
@@ -105,63 +108,80 @@ so that I can regain focus when I start feeling distracted.
 As a user, I want to have access to a history log of all changes made on the whiteboard
 so that I can review edits and contributions made over time.
 
-
 - **As the site owner**, I want to [site owner goal], so that [site owner benefit].
 
 ## Acceptance Criteria
+
 ### Must Haves
+
 - **[Must Have 1]**: [Description of requirement]
 - **[Must Have 2]**: [Description of requirement]
 - **[Must Have 3]**: [Description of requirement]
 
 ### Should Haves
+
 - **[Should Have 1]**: [Description of requirement]
 - **[Should Have 2]**: [Description of requirement]
 - **[Should Have 3]**: [Description of requirement]
 
 ### Could Haves
+
 - **[Could Have 1]**: [Description of requirement]
 - **[Could Have 2]**: [Description of requirement]
 - **[Could Have 3]**: [Description of requirement]
 
 ## Design
+
 ### Wireframes
+
 [Wireframe images or description]
 
 ### Color Palette
+
 [Color palette description and justification]
 
 ### Typography
+
 - **[Font 1]**: Used for headers because [reason for font choice].
 - **[Font 2]**: Used for body text due to its [reason for font choice, e.g., readability].
 
 ## Testing
+
 ### Tools Used
+
 - **[Tool 1]**: [Purpose of the tool]
 - **[Tool 2]**: [Purpose of the tool]
 - **[Tool 3]**: [Purpose of the tool]
 
 ### Feature Testing
+
 - [Description of testing process for feature, e.g., navigation, responsiveness]
 
 ## Deployment
+
 The project was deployed using [Deployment Platform] and can be accessed at [Live Link]. Steps taken to deploy:
+
 1. [Deployment step 1]
 2. [Deployment step 2]
 
 ## Reflection
+
 ### Successes
+
 - **[Success 1]**: [Brief description]
 - **[Success 2]**: [Brief description]
 
 ### Challenges
+
 - **[Challenge 1]**: [Brief description of challenge faced]
 - **[Challenge 2]**: [Brief description of challenge faced]
 
 ### Future Improvements
+
 [Areas for improvement and future development]
 
 ## Credits
+
 - **[Credit 1]**: [Description of contribution or inspiration source]
 - **[Credit 2]**: [Description of contribution or inspiration source]
 - **[Tools and Resources]**: [Tools used like Google Images for images, Font Awesome for icons, etc.]
