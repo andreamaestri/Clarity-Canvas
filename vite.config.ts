@@ -35,9 +35,9 @@ export default defineConfig({
       // Existing PostCSS configuration
     },
     // Include only your source CSS files
-    include: ['src/**/*.css'],
+    include: ["src/**/*.css"],
   },
   optimizeDeps: {
-    exclude: ['@fontsource-variable/lexend-deca'],
+    exclude: ["@fontsource-variable/lexend-deca"],
   },
 });
