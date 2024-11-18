@@ -1,5 +1,10 @@
-import { TLUiActionsContextType, TLUiOverrides, TLUiToolsContextType, Tldraw } from 'tldraw';
-import 'tldraw/tldraw.css';
+import {
+  TLUiActionsContextType,
+  TLUiOverrides,
+  TLUiToolsContextType,
+  Tldraw,
+} from "tldraw";
+import "tldraw/tldraw.css";
 import { useState } from "react";
 import { Toolbar } from "./components/Toolbar";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
@@ -32,7 +37,7 @@ const TldrawWrapper = () => {
 
   return (
     <div className="tldraw__editor" style={{ position: "fixed", inset: 0 }}>
-      <Tldraw 
+      <Tldraw
         darkMode={isDarkMode}
         hideUi
         persistenceKey="my-persistence-key"
