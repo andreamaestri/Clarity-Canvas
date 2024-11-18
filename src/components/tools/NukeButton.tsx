@@ -3,11 +3,11 @@ import { RiMeteorFill } from "react-icons/ri";
 import ToolButton from "../common/ToolButton";
 import type { Editor } from "tldraw";
 
-interface NukeButtonProps {
+interface NukeButtonProps extends React.ComponentProps<'div'> {
   editor: Editor;
 }
 
-const NukeButton: React.FC<NukeButtonProps> = ({ editor }) => {
+const NukeButton = ({ editor }: NukeButtonProps) => {
   const handleNuke = () => {
     editor.selectAll().deleteShapes(editor.getSelectedShapeIds());
   };
