@@ -14,8 +14,8 @@ const DrawTool = track(({ editor }: DrawToolProps) => {
   const handleSelect = () => {
     if (!editor) return;
     editor.setCurrentTool("draw");
-    editor.setStrokeColor(currentThemeObject?.primary || '#000000');
-    editor.setStrokeWidth('draw');
+    editor.setStyle("color", currentThemeObject?.colors?.primary || "#000000");
+    editor.setStyle("size", "draw");
   };
 
   return (
