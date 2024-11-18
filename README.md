@@ -63,7 +63,12 @@ This project was developed during a hackathon hosted by Code Institute. The goal
 
 ### Wireframes
 
-[Wireframe images or description]
+- The initial popup idea was simpler than the one implemented;
+  ![Initial popup idea](src/docs/images-readme/initial-popup.png)
+- Focus mode window;
+  ![Initial popup idea](src/docs/images-readme/focus-mode.png)
+  -Flex mode window;
+  ![Initial popup idea](src/docs/images-readme/flex-mode.png)
 
 ### Color Palette
 
