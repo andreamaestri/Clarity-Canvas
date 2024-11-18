@@ -29,12 +29,11 @@
 
 /* Press Highlight Styles */
 .bg-accent {
-  background-color: accent; /* Uses the current text color */
+  background-color: accent;
 }
 
 
 /* Button State-Based Styles */
 .btn[data-pressed="true"] .text-accent {
-  /* Change icon color when pressed */
   color: #ffffff;
 }
