@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   // Define interfaces inside the component
@@ -33,9 +39,15 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     setIsDarkMode(newIsDarkMode);
 
     const bgColor = newIsDarkMode ? "#1a1a1a" : "#ffffff";
-    document.documentElement.style.setProperty("--canvas-background-color", bgColor);
+    document.documentElement.style.setProperty(
+      "--canvas-background-color",
+      bgColor,
+    );
     document.documentElement.style.setProperty("--background", bgColor);
-    document.documentElement.style.setProperty("--tl-theme", newIsDarkMode ? "dark" : "light");
+    document.documentElement.style.setProperty(
+      "--tl-theme",
+      newIsDarkMode ? "dark" : "light",
+    );
 
     const canvas = document.querySelector(".tl-canvas") as HTMLElement | null;
     if (canvas) {
@@ -48,7 +60,8 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const currentThemeObject =
-    themes.find((theme) => theme.name.toLowerCase() === currentTheme) || themes[0];
+    themes.find((theme) => theme.name.toLowerCase() === currentTheme) ||
+    themes[0];
 
   const value: ThemeContextType = {
     currentTheme,
@@ -58,9 +71,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };
 
