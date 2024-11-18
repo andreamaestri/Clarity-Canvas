@@ -22,7 +22,7 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
       "aria-label": "Drawing Tools",
       orientation: "horizontal",
     },
-    toolbarRef
+    toolbarRef,
   );
 
   return (
@@ -39,14 +39,12 @@ export const Toolbar = track(({ mode, onModeToggle }: ToolbarProps) => {
       >
         <div className="hidden md:flex items-center gap-2">
           <Logo className="h-8" />
-          <span className="text-xl font-bold text-primary">
-            Clarity Canvas
-          </span>
+          <span className="text-xl font-bold text-primary">Clarity Canvas</span>
         </div>
 
         {/* Always show mode toggle */}
-        <ModeToggle 
-          mode={mode} 
+        <ModeToggle
+          mode={mode}
           onModeToggle={onModeToggle}
           onToolVisibilityChange={setIsToolbarVisible}
         />
