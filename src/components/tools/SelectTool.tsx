@@ -1,7 +1,7 @@
-import { memo } from 'react';
-import type { Editor } from 'tldraw';
-import { RiCursorFill } from 'react-icons/ri';
-import ToolButton from '../common/ToolButton';
+import { memo } from "react";
+import type { Editor } from "tldraw";
+import { RiCursorFill } from "react-icons/ri";
+import ToolButton from "../common/ToolButton";
 
 interface SelectToolProps {
   editor: Editor;
@@ -18,6 +18,6 @@ const SelectTool = memo(({ editor }: SelectToolProps) => (
   />
 ));
 
-SelectTool.displayName = 'SelectTool';
+SelectTool.displayName = "SelectTool";
 
 export default SelectTool;
