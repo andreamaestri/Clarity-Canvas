@@ -8,7 +8,6 @@ interface DrawToolProps {
 }
 
 const DrawTool = track(({ editor }: DrawToolProps) => {
-
   const handleSelect = () => {
     if (!editor) return;
     editor.setCurrentTool("draw");

@@ -32,7 +32,11 @@ const TldrawWrapper = ({
       style={{ position: "fixed", inset: 0 }}
     >
       <Tldraw persistenceKey="clarity-canvas" hideUi inferDarkMode={darkMode}>
-        <Toolbar mode={mode} onModeToggle={onModeToggle} orientation="horizontal" />
+        <Toolbar
+          mode={mode}
+          onModeToggle={onModeToggle}
+          orientation="horizontal"
+        />
       </Tldraw>
     </div>
   );

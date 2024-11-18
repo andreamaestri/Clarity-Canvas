@@ -20,7 +20,7 @@ interface DrawingToolsProps {
 
 const DrawingTools = memo(({ editor }: DrawingToolsProps) => {
   const { orientation } = useContext(ToolbarContext) as ToolbarProps;
-  
+
   return (
     <div
       role="group"
