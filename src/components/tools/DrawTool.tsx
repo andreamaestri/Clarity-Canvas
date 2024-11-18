@@ -10,12 +10,12 @@ interface DrawToolProps {
 
 const DrawTool = track(({ editor }: DrawToolProps) => {
   const { currentThemeObject } = useTheme();
-  
+
   const handleSelect = () => {
     if (!editor) return;
     editor.setCurrentTool("draw");
-    editor.setStyle('color', currentThemeObject?.colors?.primary || '#000000');
-    editor.setStyle('size', 'draw');
+    editor.setStyle("color", currentThemeObject?.colors?.primary || "#000000");
+    editor.setStyle("size", "draw");
   };
 
   return (
